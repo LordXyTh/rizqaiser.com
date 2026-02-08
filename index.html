@@ -3,127 +3,177 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Riz Qaiser — Builder of Things</title>
-  <meta name="description" content="CEO, coder, golfer, market watcher. I build companies, ship products, and occasionally hit fairways.">
+  <title>Riz Qaiser — Builder, Investor, Maker</title>
+  <meta name="description" content="CEO @ Autonomous & Memox. Building tech companies, investing in markets, occasionally hitting fairways.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <canvas id="tron-bg"></canvas>
-  
   <nav class="nav">
-    <div class="nav-logo glitch" data-text="RQ">RQ</div>
+    <a href="#" class="nav-logo">Riz Qaiser</a>
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#ventures">Ventures</a>
       <a href="#work">Work</a>
-      <a href="#etc">Etc</a>
-      <a href="#contact" class="nav-cta">Say Hi</a>
+      <a href="#contact">Contact</a>
     </div>
   </nav>
 
   <main>
     <!-- Hero -->
-    <section class="hero" id="hero">
+    <section class="hero">
       <div class="hero-content">
-        <div class="hero-pre">Hey, I'm</div>
-        <h1 class="hero-name">
-          <span class="glitch" data-text="Rizwan Qaiser">Rizwan Qaiser</span>
-        </h1>
-        <div class="hero-taglines">
-          <span class="tagline active">Building the future, one deploy at a time</span>
-          <span class="tagline">CEO by day, debugger by night</span>
-          <span class="tagline">Making AI do the boring stuff</span>
-          <span class="tagline">Turning caffeine into code since 2015</span>
-          <span class="tagline">Professional overthinker</span>
+        <div class="hero-text">
+          <p class="hero-eyebrow">Hello, I'm</p>
+          <h1 class="hero-title">
+            <span class="title-line">Rizwan</span>
+            <span class="title-line title-italic">Qaiser</span>
+          </h1>
+          <p class="hero-subtitle">
+            I build companies, write code, invest in markets,<br>
+            and <span class="text-accent">occasionally</span> make par.
+          </p>
+          <div class="hero-roles">
+            <span>CEO @ Autonomous</span>
+            <span class="role-dot"></span>
+            <span>Founder @ Memox</span>
+            <span class="role-dot"></span>
+            <span>Investor</span>
+          </div>
         </div>
-        <div class="hero-roles">
-          <span class="role">Founder & CEO</span>
-          <span class="role-divider">/</span>
-          <span class="role">Solutions Architect</span>
-          <span class="role-divider">/</span>
-          <span class="role">Investor</span>
-          <span class="role-divider">/</span>
-          <span class="role">Golfer*</span>
+        <div class="hero-image">
+          <div class="image-frame">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=80" alt="Riz Qaiser" class="portrait">
+            <div class="image-accent"></div>
+          </div>
+          <div class="hero-stamp">
+            <span>Karachi</span>
+            <span>×</span>
+            <span>Vancouver</span>
+          </div>
         </div>
-        <p class="hero-footnote">*handicap undisclosed for legal reasons</p>
-        <a href="#about" class="scroll-indicator">
-          <span>Scroll to explore</span>
-          <div class="scroll-arrow"></div>
-        </a>
+      </div>
+      <div class="scroll-hint">
+        <span>Scroll to explore</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
       </div>
     </section>
 
     <!-- About -->
     <section class="section" id="about">
-      <div class="section-grid">
-        <div class="section-label">
-          <span class="label-number">01</span>
-          <span class="label-text">About</span>
+      <div class="section-header">
+        <span class="section-number">01</span>
+        <h2 class="section-title">The Story</h2>
+      </div>
+      
+      <div class="about-grid">
+        <div class="about-main">
+          <p class="about-lead">
+            I'm a tech entrepreneur who believes in building things that matter. 
+            Based in <strong>Karachi, Pakistan</strong> with roots in <strong>Vancouver, Canada</strong>, 
+            I've spent the last decade helping businesses unlock growth through technology.
+          </p>
+          <p class="about-body">
+            My background spans MIS, Entrepreneurship, and a Business Technology Management 
+            certificate from Vancouver. I've worked in big data analytics at Visier Inc., 
+            published research with Tsinghua University, and built companies that serve 
+            clients across three continents.
+          </p>
+          <p class="about-body">
+            Philosophy? Build fast, iterate faster. Remote-first since before it was cool. 
+            AI-augmented everything. And always—premium quality.
+          </p>
         </div>
-        <div class="section-content">
-          <h2 class="section-title">The TL;DR</h2>
-          <p class="lead">I'm a tech entrepreneur based in <span class="highlight">Karachi, Pakistan</span> with roots in <span class="highlight">Vancouver, Canada</span>. I build companies, write code, and occasionally make good decisions.</p>
-          
-          <div class="about-cards">
-            <div class="about-card">
-              <div class="card-icon">🎓</div>
-              <h3>Background</h3>
-              <p>MIS + Entrepreneurship degree, Business Technology Management from Vancouver. Former Visier Inc. (big data analytics). Published research with Tsinghua University.</p>
-            </div>
-            <div class="about-card">
-              <div class="card-icon">🧠</div>
-              <h3>Philosophy</h3>
-              <p>Build fast, iterate faster. Remote-first since before it was cool. AI-augmented everything. Premium quality, always.</p>
-            </div>
-            <div class="about-card">
-              <div class="card-icon">🎯</div>
-              <h3>Focus</h3>
-              <p>Generative AI, MarTech, E-commerce. Helping SMEs punch above their weight with smart tech.</p>
-            </div>
+        
+        <div class="about-images">
+          <div class="about-image about-image-1">
+            <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=600&q=80" alt="Office">
+          </div>
+          <div class="about-image about-image-2">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80" alt="Team">
+          </div>
+        </div>
+        
+        <div class="about-facts">
+          <div class="fact">
+            <span class="fact-number">99%</span>
+            <span class="fact-label">Uptime Record</span>
+          </div>
+          <div class="fact">
+            <span class="fact-number">50+</span>
+            <span class="fact-label">Projects Delivered</span>
+          </div>
+          <div class="fact">
+            <span class="fact-number">3</span>
+            <span class="fact-label">Continents Served</span>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Ventures -->
-    <section class="section section-dark" id="ventures">
-      <div class="section-grid">
-        <div class="section-label">
-          <span class="label-number">02</span>
-          <span class="label-text">Ventures</span>
-        </div>
-        <div class="section-content">
-          <h2 class="section-title">Things I'm Building</h2>
-          
-          <div class="ventures-grid">
-            <a href="https://autonomoustech.ca" target="_blank" class="venture-card">
-              <div class="venture-logo">Autonomous</div>
-              <div class="venture-role">Founder & Solutions Architect</div>
-              <p>Tech agency helping businesses scale with custom software, AI solutions, and remote dev teams. 99% uptime, 95%+ job success.</p>
-              <div class="venture-tags">
-                <span>AI</span><span>MarTech</span><span>E-commerce</span><span>Remote Teams</span>
-              </div>
-            </a>
-            
-            <a href="https://memox.ai" target="_blank" class="venture-card">
-              <div class="venture-logo">Memox</div>
-              <div class="venture-role">Founder & CEO</div>
-              <p>AI-powered customer experience platform. Making personalized experiences accessible to everyone.</p>
-              <div class="venture-tags">
-                <span>AI Platform</span><span>SaaS</span><span>CX</span>
-              </div>
-            </a>
-
-            <div class="venture-card venture-card-alt">
-              <div class="venture-logo">📈 Portfolio</div>
-              <div class="venture-role">Angel Investor</div>
-              <p>Active in Pakistan Stock Exchange. Early equity in Visier Inc. Always looking for interesting founders building in emerging markets.</p>
-              <div class="venture-tags">
-                <span>PSX</span><span>Private Equity</span><span>Emerging Markets</span>
-              </div>
+    <section class="section section-cream" id="ventures">
+      <div class="section-header">
+        <span class="section-number">02</span>
+        <h2 class="section-title">What I'm Building</h2>
+      </div>
+      
+      <div class="ventures-grid">
+        <a href="https://autonomoustech.ca" target="_blank" class="venture-card">
+          <div class="venture-image">
+            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80" alt="Autonomous">
+          </div>
+          <div class="venture-content">
+            <div class="venture-meta">
+              <span class="venture-tag">Tech Agency</span>
+              <span class="venture-role">Founder & Solutions Architect</span>
+            </div>
+            <h3 class="venture-name">Autonomous</h3>
+            <p class="venture-desc">
+              We help businesses scale with custom software, AI solutions, and remote dev teams. 
+              Specializing in MarTech, E-commerce, and Generative AI.
+            </p>
+            <span class="venture-link">autonomoustech.ca →</span>
+          </div>
+        </a>
+        
+        <a href="https://memox.ai" target="_blank" class="venture-card">
+          <div class="venture-image">
+            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80" alt="Memox">
+          </div>
+          <div class="venture-content">
+            <div class="venture-meta">
+              <span class="venture-tag">AI Platform</span>
+              <span class="venture-role">Founder & CEO</span>
+            </div>
+            <h3 class="venture-name">Memox</h3>
+            <p class="venture-desc">
+              AI-powered customer experience platform. Making personalized experiences 
+              accessible to businesses of all sizes.
+            </p>
+            <span class="venture-link">memox.ai →</span>
+          </div>
+        </a>
+        
+        <div class="venture-card venture-card-alt">
+          <div class="venture-content">
+            <div class="venture-meta">
+              <span class="venture-tag">Investments</span>
+              <span class="venture-role">Angel & Public Markets</span>
+            </div>
+            <h3 class="venture-name">Portfolio</h3>
+            <p class="venture-desc">
+              Active investor in Pakistan Stock Exchange. Early equity in Visier Inc. 
+              Always interested in founders building in emerging markets.
+            </p>
+            <div class="venture-tags">
+              <span>PSX</span>
+              <span>Private Equity</span>
+              <span>Emerging Markets</span>
             </div>
           </div>
         </div>
@@ -132,182 +182,175 @@
 
     <!-- Work -->
     <section class="section" id="work">
-      <div class="section-grid">
-        <div class="section-label">
-          <span class="label-number">03</span>
-          <span class="label-text">Work</span>
-        </div>
-        <div class="section-content">
-          <h2 class="section-title">Greatest Hits</h2>
-          <p class="lead">Some projects that didn't break production (much).</p>
-          
-          <div class="work-grid">
-            <div class="work-item">
-              <h3>SENE</h3>
-              <p>Automated entire order pipeline with Django + Shopify. Client said "I wish I could have him for more hours!"</p>
-              <span class="work-tag">E-commerce Automation</span>
-            </div>
-            <div class="work-item">
-              <h3>Leagent</h3>
-              <p>Built data pipeline + ElasticSearch index. Dropped search times from 2s to &lt;200ms. 10x improvement.</p>
-              <span class="work-tag">Data Engineering</span>
-            </div>
-            <div class="work-item">
-              <h3>JuristAI</h3>
-              <p>Middleware architecture with Python, Django, Cognito, GraphQL. Legal tech that actually works.</p>
-              <span class="work-tag">AI / Legal Tech</span>
-            </div>
-            <div class="work-item">
-              <h3>MedChartPro</h3>
-              <p>Built eng team from scratch, shipped MVP. From idea to reality.</p>
-              <span class="work-tag">HealthTech</span>
-            </div>
-            <div class="work-item">
-              <h3>CoinOS</h3>
-              <p>DevOps implementation, decentralization goals achieved. Bitcoin infra done right.</p>
-              <span class="work-tag">Crypto / DevOps</span>
-            </div>
-            <div class="work-item">
-              <h3>League of Basketball</h3>
-              <p>React Native app with real-time scores via WebSockets. Ball is life.</p>
-              <span class="work-tag">Mobile / Sports</span>
-            </div>
+      <div class="section-header">
+        <span class="section-number">03</span>
+        <h2 class="section-title">Selected Work</h2>
+      </div>
+      
+      <div class="work-intro">
+        <p>A few projects that shipped without (too much) drama.</p>
+      </div>
+      
+      <div class="work-grid">
+        <article class="work-item">
+          <div class="work-image">
+            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="E-commerce">
           </div>
-        </div>
+          <div class="work-content">
+            <span class="work-category">E-commerce Automation</span>
+            <h3 class="work-name">SENE</h3>
+            <p class="work-desc">Automated entire order pipeline with Django + Shopify integration. 
+              Client said "I wish I could have him for more hours!"</p>
+          </div>
+        </article>
+        
+        <article class="work-item">
+          <div class="work-image">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Data">
+          </div>
+          <div class="work-content">
+            <span class="work-category">Data Engineering</span>
+            <h3 class="work-name">Leagent</h3>
+            <p class="work-desc">Built data pipeline + ElasticSearch index. 
+              Dropped search times from 2s to under 200ms. 10x improvement.</p>
+          </div>
+        </article>
+        
+        <article class="work-item">
+          <div class="work-image">
+            <img src="https://images.unsplash.com/photo-1589994965851-a8f479c573a9?w=800&q=80" alt="Legal">
+          </div>
+          <div class="work-content">
+            <span class="work-category">AI / Legal Tech</span>
+            <h3 class="work-name">JuristAI</h3>
+            <p class="work-desc">Middleware architecture with Python, Django, Cognito, GraphQL. 
+              Legal tech that actually works.</p>
+          </div>
+        </article>
+        
+        <article class="work-item">
+          <div class="work-image">
+            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80" alt="Health">
+          </div>
+          <div class="work-content">
+            <span class="work-category">HealthTech</span>
+            <h3 class="work-name">MedChartPro</h3>
+            <p class="work-desc">Built engineering team from scratch, shipped MVP. 
+              From idea to reality in record time.</p>
+          </div>
+        </article>
+        
+        <article class="work-item">
+          <div class="work-image">
+            <img src="https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=800&q=80" alt="Crypto">
+          </div>
+          <div class="work-content">
+            <span class="work-category">Crypto / DevOps</span>
+            <h3 class="work-name">CoinOS</h3>
+            <p class="work-desc">DevOps implementation, decentralization goals achieved. 
+              Bitcoin infrastructure done right.</p>
+          </div>
+        </article>
+        
+        <article class="work-item">
+          <div class="work-image">
+            <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&q=80" alt="Sports">
+          </div>
+          <div class="work-content">
+            <span class="work-category">Mobile / Sports</span>
+            <h3 class="work-name">League of Basketball</h3>
+            <p class="work-desc">React Native app with real-time scores via WebSockets. 
+              Ball is life.</p>
+          </div>
+        </article>
       </div>
     </section>
 
-    <!-- Tech Stack -->
-    <section class="section section-dark" id="stack">
-      <div class="section-grid">
-        <div class="section-label">
-          <span class="label-number">04</span>
-          <span class="label-text">Stack</span>
-        </div>
-        <div class="section-content">
-          <h2 class="section-title">Tools of the Trade</h2>
-          <div class="stack-grid">
-            <div class="stack-category">
-              <h3>Languages</h3>
-              <div class="stack-items">
-                <span>Python</span><span>TypeScript</span><span>JavaScript</span><span>SQL</span>
+    <!-- Interests -->
+    <section class="section section-dark" id="interests">
+      <div class="interests-layout">
+        <div class="interests-text">
+          <span class="section-number section-number-light">04</span>
+          <h2 class="section-title section-title-light">Beyond the Code</h2>
+          <p class="interests-desc">
+            When I'm not building or investing, you'll find me on the golf course 
+            (handicap undisclosed for legal reasons), watching the markets, 
+            or spending time with my daughter—the best debugging partner I ever had.
+          </p>
+          <div class="interests-list">
+            <div class="interest-item">
+              <span class="interest-icon">⛳</span>
+              <div>
+                <strong>Golf</strong>
+                <p>Working on that handicap. The course is my second office.</p>
               </div>
             </div>
-            <div class="stack-category">
-              <h3>Frameworks</h3>
-              <div class="stack-items">
-                <span>Django</span><span>Next.js</span><span>React</span><span>React Native</span><span>FastAPI</span>
+            <div class="interest-item">
+              <span class="interest-icon">📊</span>
+              <div>
+                <strong>Markets</strong>
+                <p>Active PSX investor. I like my portfolios like my code—balanced.</p>
               </div>
             </div>
-            <div class="stack-category">
-              <h3>AI/ML</h3>
-              <div class="stack-items">
-                <span>OpenAI</span><span>Claude</span><span>LangChain</span><span>Vector DBs</span>
-              </div>
-            </div>
-            <div class="stack-category">
-              <h3>Data</h3>
-              <div class="stack-items">
-                <span>PostgreSQL</span><span>ElasticSearch</span><span>Redis</span><span>BigQuery</span>
-              </div>
-            </div>
-            <div class="stack-category">
-              <h3>Infra</h3>
-              <div class="stack-items">
-                <span>AWS</span><span>GCP</span><span>Docker</span><span>Kubernetes</span><span>Terraform</span>
-              </div>
-            </div>
-            <div class="stack-category">
-              <h3>MarTech</h3>
-              <div class="stack-items">
-                <span>HubSpot</span><span>Shopify</span><span>Segment</span><span>PostHog</span>
+            <div class="interest-item">
+              <span class="interest-icon">👨‍👧</span>
+              <div>
+                <strong>Family</strong>
+                <p>Proud dad. She finds all the edge cases.</p>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Etc -->
-    <section class="section" id="etc">
-      <div class="section-grid">
-        <div class="section-label">
-          <span class="label-number">05</span>
-          <span class="label-text">Etc</span>
-        </div>
-        <div class="section-content">
-          <h2 class="section-title">Random Facts</h2>
-          <p class="lead">Things that didn't fit anywhere else but I wanted to share anyway.</p>
-          
-          <div class="etc-grid">
-            <div class="etc-item">
-              <span class="etc-emoji">⛳</span>
-              <h3>Golf Enthusiast</h3>
-              <p>Working on that handicap. The course is my second office.</p>
-            </div>
-            <div class="etc-item">
-              <span class="etc-emoji">📊</span>
-              <h3>Market Watcher</h3>
-              <p>Active PSX investor. I like my portfolios like my code: well-balanced and occasionally rebalanced.</p>
-            </div>
-            <div class="etc-item">
-              <span class="etc-emoji">🤖</span>
-              <h3>AI Native</h3>
-              <p>Claude Max subscriber. My AI assistant has an AI assistant. It's assistants all the way down.</p>
-            </div>
-            <div class="etc-item">
-              <span class="etc-emoji">🌏</span>
-              <h3>Two Continents</h3>
-              <p>Split between Karachi and connections to Vancouver. Timezone math is my cardio.</p>
-            </div>
-            <div class="etc-item">
-              <span class="etc-emoji">👨‍👧</span>
-              <h3>Dad Mode</h3>
-              <p>Proud father. Best debugging partner I ever had (she finds all the edge cases).</p>
-            </div>
-            <div class="etc-item">
-              <span class="etc-emoji">☕</span>
-              <h3>Caffeine Powered</h3>
-              <p>My code runs on coffee. Strong correlation, definitely causation.</p>
-            </div>
+        <div class="interests-images">
+          <div class="interest-img interest-img-1">
+            <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=600&q=80" alt="Golf">
+          </div>
+          <div class="interest-img interest-img-2">
+            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80" alt="Markets">
           </div>
         </div>
       </div>
     </section>
 
     <!-- Contact -->
-    <section class="section section-dark" id="contact">
-      <div class="section-grid">
-        <div class="section-label">
-          <span class="label-number">06</span>
-          <span class="label-text">Contact</span>
+    <section class="section" id="contact">
+      <div class="contact-layout">
+        <div class="contact-main">
+          <span class="section-number">05</span>
+          <h2 class="contact-title">Let's Talk</h2>
+          <p class="contact-desc">
+            Building something interesting? Need a dev team? 
+            Want to chat about markets or golf? I'm around.
+          </p>
+          <a href="mailto:rizwan@autonomoustech.ca" class="contact-email">
+            rizwan@autonomoustech.ca
+          </a>
         </div>
-        <div class="section-content contact-content">
-          <h2 class="section-title">Let's Talk</h2>
-          <p class="lead">Building something interesting? Need a dev team? Just want to chat about golf or markets? I'm around.</p>
-          
-          <div class="contact-links">
-            <a href="mailto:rizwan@autonomoustech.ca" class="contact-link">
-              <span class="contact-icon">📧</span>
-              <span>rizwan@autonomoustech.ca</span>
-            </a>
-            <a href="https://linkedin.com/in/rizwanqaiser1" target="_blank" class="contact-link">
-              <span class="contact-icon">💼</span>
-              <span>LinkedIn</span>
-            </a>
-            <a href="https://twitter.com/rizqaiserr" target="_blank" class="contact-link">
-              <span class="contact-icon">𝕏</span>
-              <span>@rizqaiserr</span>
-            </a>
-            <a href="https://github.com/LordXyTh" target="_blank" class="contact-link">
-              <span class="contact-icon">🐙</span>
-              <span>GitHub</span>
-            </a>
-          </div>
-          
-          <div class="contact-cta">
-            <a href="https://autonomoustech.ca/contact" target="_blank" class="btn-primary">Work With Me</a>
-          </div>
+        <div class="contact-links">
+          <a href="https://linkedin.com/in/rizwanqaiser1" target="_blank" class="contact-link">
+            <span>LinkedIn</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </a>
+          <a href="https://twitter.com/rizqaiserr" target="_blank" class="contact-link">
+            <span>Twitter</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </a>
+          <a href="https://github.com/LordXyTh" target="_blank" class="contact-link">
+            <span>GitHub</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </a>
+          <a href="https://autonomoustech.ca" target="_blank" class="contact-link">
+            <span>Autonomous</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </a>
         </div>
       </div>
     </section>
@@ -315,17 +358,12 @@
 
   <footer class="footer">
     <div class="footer-content">
-      <div class="footer-left">
-        <span class="glitch" data-text="RQ">RQ</span>
-        <span class="footer-year">© 2026</span>
-      </div>
-      <div class="footer-right">
-        <span>Built with ☕ and questionable sleep habits</span>
-      </div>
+      <span class="footer-name">Riz Qaiser</span>
+      <span class="footer-year">© 2026</span>
+      <span class="footer-tagline">Built with ☕ and questionable sleep habits</span>
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
