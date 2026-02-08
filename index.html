@@ -66,6 +66,8 @@ body::before{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;
 .hero-sub em{color:var(--orange);font-style:italic}
 .hero-avatar{width:160px;height:160px;margin:0 auto 24px;animation:fadeSlideUp .8s ease-out .4s both;position:relative}
 .hero-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;border:4px solid var(--glass-border);image-rendering:pixelated;image-rendering:crisp-edges;background:var(--glass)}
+.avatar-emote{position:absolute;inset:0;opacity:0;transition:opacity .4s ease-in-out,transform .4s ease-in-out;transform:scale(0.9)}
+.avatar-emote.active{opacity:1;transform:scale(1);position:relative}
 .hero-avatar::before{content:'';position:absolute;inset:-8px;border-radius:50%;background:conic-gradient(var(--blue),var(--orange),var(--green),var(--purple),var(--blue));animation:spin 4s linear infinite;z-index:-1;opacity:.6}
 @keyframes spin{to{transform:rotate(360deg)}}
 .hero-badges{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;animation:fadeSlideUp .8s ease-out .5s both;margin-bottom:12px}
@@ -196,8 +198,11 @@ section{position:relative;z-index:2;padding:80px 48px}
   <h1>I'm <span class="name">Riz</span>, a <span class="builder">Builder</span></h1>
   <p class="hero-sub">I run <strong>tech companies</strong>, write <strong>code</strong>, invest in <strong>markets</strong>, and <em>occasionally</em> make par on the golf course.</p>
   
-  <div class="hero-avatar">
-    <img src="images/avatar.png" alt="Riz Qaiser">
+  <div class="hero-avatar" id="heroAvatar">
+    <img src="images/emotes/happy.png" alt="Riz Qaiser" class="avatar-emote active" data-emote="happy">
+    <img src="images/emotes/wave.png" alt="Riz waving" class="avatar-emote" data-emote="wave">
+    <img src="images/emotes/think.png" alt="Riz thinking" class="avatar-emote" data-emote="think">
+    <img src="images/emotes/celebrate.png" alt="Riz celebrating" class="avatar-emote" data-emote="celebrate">
   </div>
   
   <div class="hero-badges">
@@ -488,6 +493,16 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: .1, rootMargin: '0px 0px -30px 0px' });
 revealEls.forEach(el => observer.observe(el));
 setTimeout(() => revealEls.forEach(el => el.classList.add('visible')), 2000);
+
+// ─── AVATAR EMOTE CYCLING ───
+const emotes = document.querySelectorAll('.avatar-emote');
+let currentEmote = 0;
+function cycleEmote() {
+  emotes[currentEmote].classList.remove('active');
+  currentEmote = (currentEmote + 1) % emotes.length;
+  emotes[currentEmote].classList.add('active');
+}
+setInterval(cycleEmote, 2500);
 </script>
 </body>
 </html>
