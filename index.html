@@ -3,30 +3,185 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Riz Qaiser — Builder of Things</title>
-<meta name="description" content="CEO, coder, golfer, market watcher. Building companies, shipping products, occasionally hitting fairways.">
+<title>Riz Qaiser — Builder of Cool Stuff</title>
+<meta name="description" content="CEO @ Autonomous & Memox. Building tech companies, investing in markets, occasionally hitting fairways.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --blue:#2ea3f2;--blue-glow:rgba(46,163,242,.35);
+  --orange:#ff6b35;--orange-glow:rgba(255,107,53,.3);
+  --green:#00e676;--green-dim:rgba(0,230,118,.15);
+  --purple:#a855f7;--purple-glow:rgba(168,85,247,.3);
+  --bg:#0a0e17;--surface:rgba(255,255,255,.04);
+  --glass:rgba(255,255,255,.06);--glass-border:rgba(255,255,255,.1);
+  --text:#e8eaed;--text-dim:#8892a4;
+  --font-display:'Outfit',sans-serif;--font-mono:'Space Mono',monospace;
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:var(--font-display);overflow-x:hidden;min-height:100vh}
+
+/* ─── NOISE ─── */
+body::before{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity:.4}
+
+/* ─── GRADIENT MESH ─── */
+.bg-mesh{position:fixed;inset:0;z-index:0;overflow:hidden}
+.bg-mesh .orb{position:absolute;border-radius:50%;filter:blur(120px);animation:orbFloat 20s ease-in-out infinite}
+.bg-mesh .orb:nth-child(1){width:600px;height:600px;background:var(--blue-glow);top:-10%;left:-5%;animation-delay:0s}
+.bg-mesh .orb:nth-child(2){width:500px;height:500px;background:var(--orange-glow);bottom:-15%;right:-10%;animation-delay:-7s}
+.bg-mesh .orb:nth-child(3){width:400px;height:400px;background:var(--purple-glow);top:50%;left:50%;animation-delay:-14s}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(60px,-40px) scale(1.1)}66%{transform:translate(-40px,60px) scale(.9)}}
+
+/* ─── FLOATING ITEMS ─── */
+.item-rain{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.item-drop{position:absolute;font-size:2rem;top:-60px;animation:itemFall linear infinite;will-change:transform;filter:drop-shadow(0 0 6px var(--orange-glow))}
+@keyframes itemFall{0%{transform:translateY(-60px) rotate(0deg);opacity:0}5%{opacity:.6}90%{opacity:.6}100%{transform:translateY(calc(100vh + 80px)) rotate(360deg);opacity:0}}
+
+/* ─── CONFETTI ─── */
+#confetti{position:fixed;inset:0;z-index:3;pointer-events:none}
+
+/* ─── NAV ─── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:90;padding:16px 48px;display:flex;align-items:center;justify-content:space-between;
+  background:rgba(10,14,23,.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--glass-border)}
+.nav-logo{font-weight:800;font-size:1.4rem;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:10px}
+.nav-logo span{font-size:1.6rem}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{color:var(--text-dim);text-decoration:none;font-size:.9rem;transition:color .3s}
+.nav-links a:hover{color:var(--blue)}
+.nav-cta{padding:8px 20px!important;background:var(--glass);border:1px solid var(--glass-border);border-radius:50px}
+.nav-cta:hover{border-color:var(--blue);color:var(--blue)!important}
+
+/* ─── HERO ─── */
+.hero{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.9rem;color:var(--orange);letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;animation:fadeSlideUp .8s ease-out both}
+.hero h1{font-size:clamp(2.5rem,8vw,6rem);font-weight:900;line-height:1;letter-spacing:-3px;margin-bottom:24px;animation:fadeSlideUp .8s ease-out .15s both}
+.hero h1 .name{background:linear-gradient(135deg,var(--orange),#ffab40);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:inline-block;animation:wiggle 3s ease-in-out infinite}
+.hero h1 .builder{background:linear-gradient(135deg,var(--blue),#64ffda);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+@keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-1deg)}75%{transform:rotate(1deg)}}
+.hero-sub{font-size:clamp(1.1rem,2.5vw,1.5rem);color:var(--text-dim);font-weight:300;max-width:650px;line-height:1.6;margin-bottom:32px;animation:fadeSlideUp .8s ease-out .3s both}
+.hero-sub strong{color:var(--text);font-weight:600}
+.hero-sub em{color:var(--orange);font-style:italic}
+.hero-avatar{width:160px;height:160px;margin:0 auto 24px;animation:fadeSlideUp .8s ease-out .4s both;position:relative}
+.hero-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;border:4px solid var(--glass-border);image-rendering:pixelated;image-rendering:crisp-edges;background:var(--glass)}
+.hero-avatar::before{content:'';position:absolute;inset:-8px;border-radius:50%;background:conic-gradient(var(--blue),var(--orange),var(--green),var(--purple),var(--blue));animation:spin 4s linear infinite;z-index:-1;opacity:.6}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero-badges{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;animation:fadeSlideUp .8s ease-out .5s both;margin-bottom:12px}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:50px;
+  background:var(--glass);border:1px solid var(--glass-border);backdrop-filter:blur(10px);
+  font-family:var(--font-mono);font-size:.8rem;color:var(--text-dim);transition:all .3s}
+.badge:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+.badge .emoji{font-size:1.1rem}
+.hero-footnote{font-family:var(--font-mono);font-size:.75rem;color:var(--text-dim);font-style:italic;animation:fadeSlideUp .8s ease-out .6s both}
+.hero-location{margin-top:24px;font-size:1.8rem;animation:fadeSlideUp .8s ease-out .65s both}
+
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+/* ─── SECTIONS ─── */
+section{position:relative;z-index:2;padding:80px 48px}
+.section-label{font-family:var(--font-mono);font-size:.75rem;color:var(--blue);letter-spacing:4px;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-size:clamp(2rem,4vw,3.5rem);font-weight:800;letter-spacing:-2px;margin-bottom:48px;line-height:1.1}
+.section-title .accent{color:var(--orange)}
+
+/* ─── ABOUT CARDS ─── */
+.about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:1200px;margin:0 auto}
+.about-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;padding:32px;
+  backdrop-filter:blur(12px);transition:all .4s cubic-bezier(.175,.885,.32,1.275);position:relative;overflow:hidden}
+.about-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--blue),var(--orange));transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.about-card:hover{transform:translateY(-6px);border-color:var(--blue);box-shadow:0 20px 60px rgba(46,163,242,.1)}
+.about-card:hover::before{transform:scaleX(1)}
+.about-card .icon{font-size:2.5rem;margin-bottom:16px;display:inline-block}
+.about-card h3{font-size:1.2rem;font-weight:700;margin-bottom:8px}
+.about-card p{font-size:.9rem;color:var(--text-dim);line-height:1.6}
+
+/* ─── VENTURES ─── */
+.ventures-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;max-width:1200px;margin:0 auto}
+.venture-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;padding:32px;
+  backdrop-filter:blur(12px);transition:all .4s cubic-bezier(.175,.885,.32,1.275);position:relative;overflow:hidden;text-decoration:none;color:var(--text)}
+.venture-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;transition:transform .4s}
+.venture-card.blue::before{background:linear-gradient(90deg,var(--blue),#64ffda);transform:scaleX(0);transform-origin:left}
+.venture-card.orange::before{background:linear-gradient(90deg,var(--orange),#ffab40);transform:scaleX(0);transform-origin:left}
+.venture-card.green::before{background:linear-gradient(90deg,var(--green),#a0ff6b);transform:scaleX(0);transform-origin:left}
+.venture-card:hover{transform:translateY(-8px) scale(1.01);border-color:rgba(46,163,242,.3);box-shadow:0 25px 70px rgba(46,163,242,.12)}
+.venture-card:hover::before{transform:scaleX(1)}
+.venture-card .icon{font-size:3rem;margin-bottom:16px;display:block}
+.venture-card .tag{font-family:var(--font-mono);font-size:.7rem;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.venture-card h3{font-size:1.5rem;font-weight:800;margin-bottom:8px}
+.venture-card .role{font-size:.85rem;color:var(--orange);font-family:var(--font-mono);margin-bottom:12px}
+.venture-card p{font-size:.9rem;color:var(--text-dim);line-height:1.6;margin-bottom:16px}
+.venture-card .link{font-size:.85rem;color:var(--blue)}
+
+/* ─── WORK GRID ─── */
+.work-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:1200px;margin:0 auto}
+.work-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;padding:24px;
+  backdrop-filter:blur(12px);transition:all .3s}
+.work-card:hover{transform:translateY(-4px);border-color:var(--orange)}
+.work-card .emoji{font-size:2rem;margin-bottom:12px;display:block}
+.work-card .cat{font-family:var(--font-mono);font-size:.7rem;color:var(--orange);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+.work-card h3{font-size:1.1rem;font-weight:700;margin-bottom:6px}
+.work-card p{font-size:.85rem;color:var(--text-dim)}
+.work-card .quote{font-size:.75rem;color:var(--green);font-style:italic;font-family:var(--font-mono);margin-top:8px;display:block}
+
+/* ─── VIBES ─── */
+.vibes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;max-width:1000px;margin:0 auto}
+.vibe-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;padding:24px;text-align:center;
+  backdrop-filter:blur(12px);transition:all .3s}
+.vibe-card:hover{transform:translateY(-4px);border-color:var(--purple)}
+.vibe-card .emoji{font-size:2.5rem;margin-bottom:12px;display:block}
+.vibe-card h3{font-size:1rem;font-weight:700;margin-bottom:6px}
+.vibe-card p{font-size:.8rem;color:var(--text-dim)}
+
+/* ─── MARQUEE ─── */
+.marquee-wrap{position:relative;z-index:2;padding:20px 0;
+  background:var(--surface);border-top:1px solid var(--glass-border);border-bottom:1px solid var(--glass-border);overflow:hidden}
+.marquee-track{display:flex;gap:48px;animation:marqueeScroll 40s linear infinite;width:max-content}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-item{white-space:nowrap;font-family:var(--font-mono);font-size:.85rem;color:var(--text-dim);display:flex;align-items:center;gap:10px}
+.marquee-item .sep{color:var(--orange);font-size:1rem}
+@keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ─── CONTACT ─── */
+.contact-section{max-width:800px;margin:0 auto;text-align:center}
+.contact-section .email{display:inline-block;font-size:1.5rem;font-weight:700;color:var(--orange);margin:24px 0;text-decoration:none;border-bottom:2px solid transparent;transition:all .3s}
+.contact-section .email:hover{border-color:var(--orange)}
+.contact-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:24px}
+.contact-link{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;
+  background:var(--glass);border:1px solid var(--glass-border);border-radius:50px;
+  font-size:.9rem;color:var(--text-dim);text-decoration:none;transition:all .3s}
+.contact-link:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+.contact-link svg{width:16px;height:16px}
+
+/* ─── FOOTER ─── */
+.footer{position:relative;z-index:2;text-align:center;padding:48px;border-top:1px solid var(--glass-border)}
+.footer .hearts{font-size:1.5rem;margin-bottom:12px;animation:heartbeat 1.5s ease-in-out infinite}
+@keyframes heartbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.footer p{font-size:.85rem;color:var(--text-dim);font-family:var(--font-mono)}
+
+/* ─── SCROLL REVEAL ─── */
+.reveal{opacity:0;transform:translateY(40px);transition:all .7s cubic-bezier(.175,.885,.32,1.275)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:768px){
+  section{padding:60px 20px}
+  .nav{padding:12px 20px}
+  .nav-links{display:none}
+  .hero h1{font-size:clamp(2rem,10vw,4rem)}
+  .hero-badges{flex-direction:column;align-items:center}
+}
+</style>
 </head>
 <body>
 
-<!-- Animated Background -->
-<div class="bg-mesh">
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-</div>
+<div class="bg-mesh"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
+<div class="item-rain" id="itemRain"></div>
+<canvas id="confetti"></canvas>
 
-<!-- Floating Icons -->
-<div class="floating-icons" id="floatingIcons"></div>
-
-<!-- Navigation -->
 <nav class="nav">
-  <a href="#" class="nav-logo">
-    <span class="logo-emoji">🚀</span>
-    <span>riz.q</span>
-  </a>
+  <a href="#" class="nav-logo"><span>🚀</span> riz.q</a>
   <div class="nav-links">
     <a href="#about">About</a>
     <a href="#ventures">Ventures</a>
@@ -36,329 +191,303 @@
   </div>
 </nav>
 
-<main>
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-badge">
-      <span class="badge-dot"></span>
-      <span>Open to interesting conversations</span>
-    </div>
-    
-    <h1 class="hero-title">
-      <span class="line">Hey, I'm</span>
-      <span class="line name">Rizwan <span class="accent">Qaiser</span></span>
-    </h1>
-    
-    <p class="hero-subtitle">
-      I build <span class="highlight">companies</span>, write <span class="highlight">code</span>, 
-      invest in <span class="highlight">markets</span>, and <em>occasionally</em> make par.
-    </p>
-    
-    <div class="hero-roles">
-      <span class="role-tag">🏢 CEO @ Autonomous</span>
-      <span class="role-tag">🧠 Founder @ Memox</span>
-      <span class="role-tag">📈 Investor</span>
-      <span class="role-tag">⛳ Golfer*</span>
-    </div>
-    
-    <p class="hero-footnote">*handicap undisclosed for legal reasons</p>
-    
-    <div class="hero-avatar">
-      <div class="avatar-glow"></div>
-      <img src="images/avatar.png" alt="Riz" class="avatar-img">
-      <div class="avatar-badge">🇵🇰 × 🇨🇦</div>
-    </div>
-    
-    <div class="scroll-indicator">
-      <span>Scroll down</span>
-      <div class="scroll-arrow">↓</div>
-    </div>
-  </section>
+<section class="hero">
+  <div class="hero-eyebrow">// Hello World</div>
+  <h1>I'm <span class="name">Riz</span>, a <span class="builder">Builder</span></h1>
+  <p class="hero-sub">I run <strong>tech companies</strong>, write <strong>code</strong>, invest in <strong>markets</strong>, and <em>occasionally</em> make par on the golf course.</p>
+  
+  <div class="hero-avatar">
+    <img src="images/avatar.png" alt="Riz Qaiser">
+  </div>
+  
+  <div class="hero-badges">
+    <div class="badge"><span class="emoji">🏢</span> CEO @ Autonomous</div>
+    <div class="badge"><span class="emoji">🧠</span> Founder @ Memox</div>
+    <div class="badge"><span class="emoji">📈</span> PSX Investor</div>
+    <div class="badge"><span class="emoji">⛳</span> Golfer*</div>
+  </div>
+  <p class="hero-footnote">*handicap undisclosed for legal reasons</p>
+  
+  <div class="hero-location">🇵🇰 × 🇨🇦</div>
+</section>
 
-  <!-- About -->
-  <section class="section" id="about">
-    <div class="section-header">
-      <span class="section-tag">// 01</span>
-      <h2 class="section-title">The <span class="accent">TL;DR</span></h2>
-    </div>
-    
+<section id="about">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="section-label reveal">// The TL;DR</div>
+    <h2 class="section-title reveal">Who's This <span class="accent">Guy</span></h2>
     <div class="about-grid">
-      <div class="about-text">
-        <p class="about-lead">
-          Tech entrepreneur based in <strong>Karachi 🇵🇰</strong> with roots in 
-          <strong>Vancouver 🇨🇦</strong>. I've spent the last decade helping 
-          businesses unlock growth through technology.
-        </p>
-        <p class="about-body">
-          MIS + Entrepreneurship background, Business Technology Management from Vancouver. 
-          Former Visier Inc. (big data analytics). Published research with Tsinghua University.
-        </p>
-        <p class="about-body">
-          Philosophy? <em>Build fast, iterate faster.</em> Remote-first since before it was cool. 
-          AI-augmented everything. Premium quality, always.
-        </p>
+      <div class="about-card reveal">
+        <div class="icon">🎓</div>
+        <h3>Background</h3>
+        <p>MIS + Entrepreneurship. Business Tech Management from Vancouver. Former Visier Inc. (big data). Published research with Tsinghua University.</p>
       </div>
-      
-      <div class="about-cards">
-        <div class="stat-card">
-          <span class="stat-emoji">🎯</span>
-          <span class="stat-number">99%</span>
-          <span class="stat-label">Uptime Record</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-emoji">🚀</span>
-          <span class="stat-number">50+</span>
-          <span class="stat-label">Projects Shipped</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-emoji">🌍</span>
-          <span class="stat-number">3</span>
-          <span class="stat-label">Continents Served</span>
-        </div>
+      <div class="about-card reveal">
+        <div class="icon">🧠</div>
+        <h3>Philosophy</h3>
+        <p>Build fast, iterate faster. Remote-first since before it was cool. AI-augmented everything. Premium quality, always.</p>
+      </div>
+      <div class="about-card reveal">
+        <div class="icon">🎯</div>
+        <h3>Focus</h3>
+        <p>Generative AI, MarTech, E-commerce. Helping SMEs punch above their weight with smart tech and killer execution.</p>
+      </div>
+      <div class="about-card reveal">
+        <div class="icon">🌍</div>
+        <h3>Two Continents</h3>
+        <p>Based in Karachi 🇵🇰 with roots in Vancouver 🇨🇦. Timezone math is my cardio.</p>
+      </div>
+      <div class="about-card reveal">
+        <div class="icon">📊</div>
+        <h3>By The Numbers</h3>
+        <p>99% uptime record. 50+ projects shipped. 3 continents served. 1 golf handicap we don't talk about.</p>
+      </div>
+      <div class="about-card reveal">
+        <div class="icon">☕</div>
+        <h3>Fuel</h3>
+        <p>My code runs on coffee. Strong correlation with productivity. Definitely causation. Don't @ me.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Ventures -->
-  <section class="section" id="ventures">
-    <div class="section-header">
-      <span class="section-tag">// 02</span>
-      <h2 class="section-title">What I'm <span class="accent">Building</span></h2>
-    </div>
-    
+<section id="ventures">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="section-label reveal">// What I'm Building</div>
+    <h2 class="section-title reveal">The <span class="accent">Ventures</span></h2>
     <div class="ventures-grid">
-      <a href="https://autonomoustech.ca" target="_blank" class="venture-card card-blue">
-        <div class="venture-icon">🏢</div>
-        <div class="venture-meta">
-          <span class="venture-tag">Tech Agency</span>
-          <span class="venture-role">Founder & Solutions Architect</span>
-        </div>
-        <h3 class="venture-name">Autonomous</h3>
-        <p class="venture-desc">
-          Helping businesses scale with custom software, AI solutions, and remote dev teams. 
-          MarTech, E-commerce, Generative AI.
-        </p>
-        <div class="venture-link">autonomoustech.ca →</div>
+      <a href="https://autonomoustech.ca" target="_blank" class="venture-card blue reveal">
+        <div class="icon">🏢</div>
+        <div class="tag">Tech Agency</div>
+        <h3>Autonomous</h3>
+        <div class="role">Founder & Solutions Architect</div>
+        <p>Helping businesses scale with custom software, AI solutions, and remote dev teams. MarTech, E-commerce, Generative AI specialists.</p>
+        <span class="link">autonomoustech.ca →</span>
       </a>
-      
-      <a href="https://memox.ai" target="_blank" class="venture-card card-purple">
-        <div class="venture-icon">🧠</div>
-        <div class="venture-meta">
-          <span class="venture-tag">AI Platform</span>
-          <span class="venture-role">Founder & CEO</span>
-        </div>
-        <h3 class="venture-name">Memox</h3>
-        <p class="venture-desc">
-          AI-powered customer experience platform. Making personalized experiences 
-          accessible to everyone.
-        </p>
-        <div class="venture-link">memox.ai →</div>
+      <a href="https://memox.ai" target="_blank" class="venture-card orange reveal">
+        <div class="icon">🧠</div>
+        <div class="tag">AI Platform</div>
+        <h3>Memox</h3>
+        <div class="role">Founder & CEO</div>
+        <p>AI-powered customer experience platform. Making personalized experiences accessible to everyone, not just the big guys.</p>
+        <span class="link">memox.ai →</span>
       </a>
-      
-      <div class="venture-card card-green">
-        <div class="venture-icon">📈</div>
-        <div class="venture-meta">
-          <span class="venture-tag">Investments</span>
-          <span class="venture-role">Angel & Public Markets</span>
-        </div>
-        <h3 class="venture-name">Portfolio</h3>
-        <p class="venture-desc">
-          Active PSX investor. Early equity in Visier Inc. 
-          Always looking for founders building in emerging markets.
-        </p>
-        <div class="venture-tags">
-          <span>PSX</span>
-          <span>Private Equity</span>
-          <span>Emerging Markets</span>
-        </div>
+      <div class="venture-card green reveal">
+        <div class="icon">📈</div>
+        <div class="tag">Investments</div>
+        <h3>Portfolio</h3>
+        <div class="role">Angel & Public Markets</div>
+        <p>Active PSX investor. Early equity in Visier Inc. Always looking for founders building cool stuff in emerging markets.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Work -->
-  <section class="section" id="work">
-    <div class="section-header">
-      <span class="section-tag">// 03</span>
-      <h2 class="section-title">Greatest <span class="accent">Hits</span></h2>
-      <p class="section-subtitle">Projects that shipped without (too much) drama</p>
-    </div>
-    
+<section id="work">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="section-label reveal">// Greatest Hits</div>
+    <h2 class="section-title reveal">Projects That <span class="accent">Shipped</span></h2>
     <div class="work-grid">
-      <div class="work-card">
-        <span class="work-emoji">🛍️</span>
-        <span class="work-category">E-commerce</span>
+      <div class="work-card reveal">
+        <span class="emoji">🛍️</span>
+        <span class="cat">E-commerce</span>
         <h3>SENE</h3>
         <p>Automated entire order pipeline. Django + Shopify magic.</p>
-        <span class="work-quote">"I wish I could have him for more hours!"</span>
+        <span class="quote">"I wish I could have him for more hours!"</span>
       </div>
-      
-      <div class="work-card">
-        <span class="work-emoji">⚡</span>
-        <span class="work-category">Data Engineering</span>
+      <div class="work-card reveal">
+        <span class="emoji">⚡</span>
+        <span class="cat">Data Engineering</span>
         <h3>Leagent</h3>
         <p>ElasticSearch pipeline. 2s → 200ms. 10x improvement.</p>
       </div>
-      
-      <div class="work-card">
-        <span class="work-emoji">⚖️</span>
-        <span class="work-category">Legal Tech</span>
+      <div class="work-card reveal">
+        <span class="emoji">⚖️</span>
+        <span class="cat">Legal Tech</span>
         <h3>JuristAI</h3>
         <p>Python + Django + Cognito + GraphQL middleware.</p>
       </div>
-      
-      <div class="work-card">
-        <span class="work-emoji">🏥</span>
-        <span class="work-category">HealthTech</span>
+      <div class="work-card reveal">
+        <span class="emoji">🏥</span>
+        <span class="cat">HealthTech</span>
         <h3>MedChartPro</h3>
         <p>Built eng team from scratch. Idea → MVP shipped.</p>
       </div>
-      
-      <div class="work-card">
-        <span class="work-emoji">₿</span>
-        <span class="work-category">Crypto</span>
+      <div class="work-card reveal">
+        <span class="emoji">₿</span>
+        <span class="cat">Crypto</span>
         <h3>CoinOS</h3>
         <p>DevOps + decentralization. Bitcoin infra done right.</p>
       </div>
-      
-      <div class="work-card">
-        <span class="work-emoji">🏀</span>
-        <span class="work-category">Sports</span>
+      <div class="work-card reveal">
+        <span class="emoji">🏀</span>
+        <span class="cat">Sports</span>
         <h3>LOB</h3>
-        <p>React Native + WebSockets. Real-time scores.</p>
+        <p>React Native + WebSockets. Real-time scores. Ball is life.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Vibes -->
-  <section class="section section-dark" id="vibes">
-    <div class="section-header">
-      <span class="section-tag section-tag-light">// 04</span>
-      <h2 class="section-title section-title-light">Beyond the <span class="accent">Code</span></h2>
-    </div>
-    
+<div class="marquee-wrap">
+  <div class="marquee-track" id="marquee"></div>
+</div>
+
+<section id="vibes">
+  <div style="max-width:1000px;margin:0 auto">
+    <div class="section-label reveal">// Beyond The Code</div>
+    <h2 class="section-title reveal">The <span class="accent">Vibes</span></h2>
     <div class="vibes-grid">
-      <div class="vibe-card">
-        <span class="vibe-emoji">⛳</span>
+      <div class="vibe-card reveal">
+        <span class="emoji">⛳</span>
         <h3>Golf</h3>
         <p>Working on that handicap. The course is my second office.</p>
       </div>
-      
-      <div class="vibe-card">
-        <span class="vibe-emoji">📊</span>
+      <div class="vibe-card reveal">
+        <span class="emoji">📊</span>
         <h3>Markets</h3>
-        <p>Active PSX investor. Portfolios like code — balanced and occasionally rebalanced.</p>
+        <p>Portfolios like code — balanced and occasionally rebalanced.</p>
       </div>
-      
-      <div class="vibe-card">
-        <span class="vibe-emoji">🤖</span>
+      <div class="vibe-card reveal">
+        <span class="emoji">🤖</span>
         <h3>AI Native</h3>
-        <p>Claude Max subscriber. My AI has an AI. Assistants all the way down.</p>
+        <p>Claude Max subscriber. My AI has an AI. It's assistants all the way down.</p>
       </div>
-      
-      <div class="vibe-card">
-        <span class="vibe-emoji">👨‍👧</span>
+      <div class="vibe-card reveal">
+        <span class="emoji">👨‍👧</span>
         <h3>Dad Mode</h3>
-        <p>Proud father. Best debugging partner — she finds all the edge cases.</p>
-      </div>
-      
-      <div class="vibe-card">
-        <span class="vibe-emoji">☕</span>
-        <h3>Caffeine</h3>
-        <p>My code runs on coffee. Strong correlation, definitely causation.</p>
-      </div>
-      
-      <div class="vibe-card">
-        <span class="vibe-emoji">🌏</span>
-        <h3>Two Continents</h3>
-        <p>Karachi × Vancouver. Timezone math is my cardio.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Tech Stack Marquee -->
-  <div class="marquee-section">
-    <div class="marquee-track">
-      <div class="marquee-content">
-        <span>Python</span><span class="dot">•</span>
-        <span>TypeScript</span><span class="dot">•</span>
-        <span>Django</span><span class="dot">•</span>
-        <span>Next.js</span><span class="dot">•</span>
-        <span>React</span><span class="dot">•</span>
-        <span>Claude</span><span class="dot">•</span>
-        <span>OpenAI</span><span class="dot">•</span>
-        <span>PostgreSQL</span><span class="dot">•</span>
-        <span>ElasticSearch</span><span class="dot">•</span>
-        <span>AWS</span><span class="dot">•</span>
-        <span>Docker</span><span class="dot">•</span>
-        <span>Shopify</span><span class="dot">•</span>
-        <span>HubSpot</span><span class="dot">•</span>
-      </div>
-      <div class="marquee-content">
-        <span>Python</span><span class="dot">•</span>
-        <span>TypeScript</span><span class="dot">•</span>
-        <span>Django</span><span class="dot">•</span>
-        <span>Next.js</span><span class="dot">•</span>
-        <span>React</span><span class="dot">•</span>
-        <span>Claude</span><span class="dot">•</span>
-        <span>OpenAI</span><span class="dot">•</span>
-        <span>PostgreSQL</span><span class="dot">•</span>
-        <span>ElasticSearch</span><span class="dot">•</span>
-        <span>AWS</span><span class="dot">•</span>
-        <span>Docker</span><span class="dot">•</span>
-        <span>Shopify</span><span class="dot">•</span>
-        <span>HubSpot</span><span class="dot">•</span>
+        <p>Best debugging partner. She finds all the edge cases.</p>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- Contact -->
-  <section class="section" id="contact">
-    <div class="contact-layout">
-      <div class="contact-main">
-        <span class="section-tag">// 05</span>
-        <h2 class="section-title">Let's <span class="accent">Talk</span></h2>
-        <p class="contact-desc">
-          Building something interesting? Need a dev team? 
-          Want to chat about markets or golf? I'm around.
-        </p>
-        <a href="mailto:rizwan@autonomoustech.ca" class="contact-email">
-          rizwan@autonomoustech.ca
-        </a>
-      </div>
-      
-      <div class="contact-links">
-        <a href="https://linkedin.com/in/rizwanqaiser1" target="_blank" class="contact-link">
-          <span>LinkedIn</span>
-          <span class="link-arrow">↗</span>
-        </a>
-        <a href="https://twitter.com/rizqaiserr" target="_blank" class="contact-link">
-          <span>Twitter / X</span>
-          <span class="link-arrow">↗</span>
-        </a>
-        <a href="https://github.com/LordXyTh" target="_blank" class="contact-link">
-          <span>GitHub</span>
-          <span class="link-arrow">↗</span>
-        </a>
-        <a href="https://autonomoustech.ca" target="_blank" class="contact-link">
-          <span>Autonomous</span>
-          <span class="link-arrow">↗</span>
-        </a>
-      </div>
+<section id="contact">
+  <div class="contact-section">
+    <div class="section-label reveal">// Let's Talk</div>
+    <h2 class="section-title reveal">Say <span class="accent">Hello</span></h2>
+    <p class="reveal" style="color:var(--text-dim);margin-bottom:16px">Building something cool? Need a dev team? Want to chat about markets, golf, or AI? I'm around.</p>
+    <a href="mailto:rizwan@autonomoustech.ca" class="email reveal">rizwan@autonomoustech.ca</a>
+    <div class="contact-links reveal">
+      <a href="https://linkedin.com/in/rizwanqaiser1" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://twitter.com/rizqaiserr" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        Twitter
+      </a>
+      <a href="https://github.com/LordXyTh" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="https://autonomoustech.ca" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+        Autonomous
+      </a>
     </div>
-  </section>
-</main>
-
-<footer class="footer">
-  <div class="footer-content">
-    <span class="footer-emoji">🚀</span>
-    <span class="footer-name">Riz Qaiser</span>
-    <span class="footer-divider">•</span>
-    <span class="footer-year">© 2026</span>
-    <span class="footer-divider">•</span>
-    <span class="footer-tagline">Built with ☕ and questionable sleep</span>
   </div>
-</footer>
+</section>
 
-<script src="script.js"></script>
+<div class="footer">
+  <div class="hearts">🚀 ❤️ ☕</div>
+  <p>&copy; 2026 Riz Qaiser — Made with caffeine &amp; Claude</p>
+</div>
+
+<script>
+// ─── FLOATING ITEMS ───
+const items = ['💻','🚀','⚡','☕','🧠','📈','⛳','🏢','✨','🔥','💡','🎯'];
+const rain = document.getElementById('itemRain');
+function spawnItem() {
+  const el = document.createElement('div');
+  el.className = 'item-drop';
+  el.textContent = items[Math.floor(Math.random() * items.length)];
+  el.style.left = Math.random() * 100 + 'vw';
+  el.style.fontSize = (1.2 + Math.random() * 1.5) + 'rem';
+  el.style.animationDuration = (8 + Math.random() * 10) + 's';
+  el.style.animationDelay = Math.random() * 2 + 's';
+  rain.appendChild(el);
+  setTimeout(() => el.remove(), 20000);
+}
+setInterval(spawnItem, 800);
+for (let i = 0; i < 12; i++) setTimeout(spawnItem, i * 200);
+
+// ─── MARQUEE ───
+const jokes = [
+  "🚀 Building cool stuff since forever",
+  "☕ Powered by dangerous amounts of coffee",
+  "🧠 AI-native before it was trendy",
+  "📈 Portfolios rebalanced, code refactored",
+  "⛳ Golf handicap: classified information",
+  "💻 Django whisperer, React wrangler",
+  "🇵🇰 × 🇨🇦 Two continents, one timezone nightmare",
+  "🏢 Autonomous: Your success is our success",
+  "🤖 My AI assistant has an AI assistant",
+  "🎯 99% uptime, 100% commitment",
+  "🔥 Shipping code, stacking wins",
+  "👨‍👧 Dad mode: activated",
+];
+const marquee = document.getElementById('marquee');
+const doubled = [...jokes, ...jokes];
+marquee.innerHTML = doubled.map(j => `<span class="marquee-item"><span class="sep">◆</span>${j}</span>`).join('');
+
+// ─── CONFETTI ───
+const canvas = document.getElementById('confetti');
+const ctx = canvas.getContext('2d');
+let W, H;
+function resize() { W = canvas.width = innerWidth; H = canvas.height = innerHeight; }
+resize(); window.addEventListener('resize', resize);
+const confettiColors = ['#2ea3f2','#ff6b35','#00e676','#ffab40','#a855f7','#64ffda'];
+const pieces = [];
+class Piece {
+  constructor() { this.reset(true); }
+  reset(init) {
+    this.x = Math.random() * W;
+    this.y = init ? Math.random() * -H : -20;
+    this.w = 4 + Math.random() * 5;
+    this.h = 6 + Math.random() * 8;
+    this.color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+    this.vy = 1 + Math.random() * 1.5;
+    this.vx = (Math.random() - .5) * 1.5;
+    this.angle = Math.random() * 360;
+    this.va = (Math.random() - .5) * 5;
+    this.opacity = .5 + Math.random() * .3;
+  }
+  update() {
+    this.y += this.vy;
+    this.x += this.vx + Math.sin(this.y * .01) * .4;
+    this.angle += this.va;
+    if (this.y > H + 20) this.reset(false);
+  }
+  draw() {
+    ctx.save();
+    ctx.translate(this.x, this.y);
+    ctx.rotate(this.angle * Math.PI / 180);
+    ctx.globalAlpha = this.opacity;
+    ctx.fillStyle = this.color;
+    ctx.fillRect(-this.w / 2, -this.h / 2, this.w, this.h);
+    ctx.restore();
+  }
+}
+for (let i = 0; i < 60; i++) pieces.push(new Piece());
+function animateConfetti() {
+  ctx.clearRect(0, 0, W, H);
+  pieces.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animateConfetti);
+}
+animateConfetti();
+
+// ─── SCROLL REVEAL ───
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: .1, rootMargin: '0px 0px -30px 0px' });
+revealEls.forEach(el => observer.observe(el));
+setTimeout(() => revealEls.forEach(el => el.classList.add('visible')), 2000);
+</script>
 </body>
 </html>
