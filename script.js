@@ -1,37 +1,56 @@
 // ============================================
-// RIZQAISER.COM - Smooth Interactions
+// RIZQAISER.COM - Playful Interactions
 // ============================================
 
-// Smooth image loading
-document.querySelectorAll('img').forEach(img => {
-  if (img.complete) {
-    img.classList.add('loaded');
-  } else {
-    img.addEventListener('load', () => img.classList.add('loaded'));
-  }
-});
+// Floating icons
+const icons = ['💻', '🚀', '⚡', '🎯', '☕', '🧠', '📈', '⛳', '🏢', '🌍', '✨', '🔥'];
 
-// Scroll-triggered animations
+function createFloatingIcon() {
+  const container = document.getElementById('floatingIcons');
+  if (!container) return;
+  
+  const icon = document.createElement('div');
+  icon.className = 'float-icon';
+  icon.textContent = icons[Math.floor(Math.random() * icons.length)];
+  icon.style.left = Math.random() * 100 + 'vw';
+  icon.style.animationDuration = (15 + Math.random() * 10) + 's';
+  icon.style.animationDelay = Math.random() * 5 + 's';
+  
+  container.appendChild(icon);
+  
+  // Remove after animation
+  setTimeout(() => icon.remove(), 25000);
+}
+
+// Spawn icons periodically
+setInterval(createFloatingIcon, 2000);
+for (let i = 0; i < 5; i++) {
+  setTimeout(createFloatingIcon, i * 500);
+}
+
+// Scroll reveal animations
 const observerOptions = {
-  threshold: 0.15,
+  threshold: 0.1,
   rootMargin: '0px 0px -50px 0px'
 };
 
-const fadeUpElements = document.querySelectorAll('.section-header, .about-main, .about-images, .about-facts, .venture-card, .work-item, .interests-text, .interests-images, .contact-main, .contact-links');
+const revealElements = document.querySelectorAll('.section-header, .about-grid, .stat-card, .venture-card, .work-card, .vibe-card, .contact-layout');
 
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
+  entries.forEach((entry, index) => {
     if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
+      setTimeout(() => {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }, index * 100);
     }
   });
 }, observerOptions);
 
-fadeUpElements.forEach((el, i) => {
+revealElements.forEach((el, i) => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(30px)';
-  el.style.transition = `opacity 0.6s ease ${i % 4 * 0.1}s, transform 0.6s ease ${i % 4 * 0.1}s`;
+  el.style.transition = `all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) ${(i % 4) * 0.1}s`;
   observer.observe(el);
 });
 
@@ -49,34 +68,29 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Navbar background on scroll
-const nav = document.querySelector('.nav');
-let lastScroll = 0;
-
-window.addEventListener('scroll', () => {
-  const currentScroll = window.pageYOffset;
+// Parallax on orbs
+const orbs = document.querySelectorAll('.orb');
+window.addEventListener('mousemove', (e) => {
+  const x = e.clientX / window.innerWidth;
+  const y = e.clientY / window.innerHeight;
   
-  if (currentScroll > 100) {
-    nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
-  } else {
-    nav.style.boxShadow = 'none';
-  }
-  
-  lastScroll = currentScroll;
+  orbs.forEach((orb, i) => {
+    const speed = (i + 1) * 20;
+    orb.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+  });
 });
 
-// Parallax effect on hero image
-const heroImage = document.querySelector('.hero-image');
-if (heroImage) {
-  window.addEventListener('scroll', () => {
-    const scroll = window.pageYOffset;
-    if (scroll < window.innerHeight) {
-      heroImage.style.transform = `translateY(${scroll * 0.1}px)`;
-    }
-  });
-}
+// Nav background on scroll
+const nav = document.querySelector('.nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) {
+    nav.style.background = 'rgba(10, 14, 23, 0.95)';
+  } else {
+    nav.style.background = 'rgba(10, 14, 23, 0.8)';
+  }
+});
 
 // Easter egg
-console.log('%c👋 Hey, curious one!', 'font-size: 20px; font-weight: bold;');
-console.log('%cLooking for the source? → github.com/LordXyTh/rizqaiser.com', 'font-size: 14px;');
-console.log('%cWanna chat? → rizwan@autonomoustech.ca', 'font-size: 14px; color: #C45C26;');
+console.log('%c🚀 Hey there, curious one!', 'font-size: 20px; font-weight: bold; color: #ff6b35;');
+console.log('%cSource: github.com/LordXyTh/rizqaiser.com', 'font-size: 14px; color: #e8eaed;');
+console.log('%cWanna chat? rizwan@autonomoustech.ca', 'font-size: 14px; color: #2ea3f2;');
