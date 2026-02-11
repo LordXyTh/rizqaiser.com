@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Happy Valentine's Day, Haya ❤️</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;0,6..96,900;1,6..96,400&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --heading: 'Bodoni Moda', serif;
+  --body: 'Cormorant Garamond', serif;
+  --handwritten: 'Caveat', cursive;
+}
+
+html, body {
+  overflow: hidden;
+  width: 100%; height: 100%;
+  font-family: var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+
+#slider {
+  display: flex;
+  width: 700vw; height: 100vh;
+  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.panel {
+  width: 100vw; height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* NAV */
+.nav-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  width: 48px; height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex; align-items: center; justify-content: center;
+}
+.nav-arrow:hover { background: rgba(255,255,255,0.3); }
+.nav-arrow.left { left: 16px; }
+.nav-arrow.right { right: 16px; }
+.nav-arrow:disabled { opacity: 0.2; pointer-events: none; }
+
+.dots {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  gap: 10px;
+}
+.dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  border: 1.5px solid rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.dot.active {
+  background: #fff;
+  transform: scale(1.3);
+}
+
+/* ===== PANEL 1: WELCOME ===== */
+.panel-welcome {
+  background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 30%, #f48fb1 60%, #e8a0bf 100%);
+}
+.panel-welcome .title {
+  font-family: var(--heading);
+  font-size: clamp(2.2rem, 8vw, 5.5rem);
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 40px rgba(183,28,28,0.15);
+  letter-spacing: 0.02em;
+  text-align: center;
+  line-height: 1.15;
+  z-index: 2;
+  animation: fadeUp 1.2s ease both;
+}
+.panel-welcome .subtitle {
+  font-family: var(--body);
+  font-size: clamp(1rem, 3vw, 1.6rem);
+  color: rgba(255,255,255,0.85);
+  margin-top: 16px;
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.15em;
+  z-index: 2;
+  animation: fadeUp 1.2s 0.3s ease both;
+}
+#petals-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== PANEL 2: BUMBLE ===== */
+.panel-bumble {
+  background: linear-gradient(160deg, #fff8e1 0%, #ffecb3 40%, #ffe082 100%);
+}
+.panel-bumble .section-title {
+  font-family: var(--heading);
+  font-size: clamp(1.3rem, 4vw, 2.2rem);
+  color: #5d4037;
+  margin-bottom: 20px;
+  text-align: center;
+  z-index: 2;
+}
+.phone-frame {
+  width: min(320px, 85vw);
+  height: min(580px, 72vh);
+  background: #1a1a1a;
+  border-radius: 40px;
+  padding: 12px;
+  position: relative;
+  box-shadow: 0 25px 80px rgba(0,0,0,0.25), inset 0 0 0 2px #333;
+  z-index: 2;
+}
+.phone-notch {
+  width: 120px; height: 28px;
+  background: #1a1a1a;
+  border-radius: 0 0 18px 18px;
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+.phone-screen {
+  width: 100%; height: 100%;
+  background: #fff;
+  border-radius: 30px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.bumble-header {
+  background: #FFC629;
+  padding: 42px 16px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.bumble-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  font-family: var(--body);
+}
+.bumble-name {
+  font-weight: 700;
+  font-size: 16px;
+  color: #1a1a1a;
+  font-family: sans-serif;
+}
+.chat-area {
+  flex: 1;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  background: #fafafa;
+}
+.chat-msg {
+  max-width: 78%;
+  padding: 10px 14px;
+  border-radius: 18px;
+  font-size: 14px;
+  line-height: 1.4;
+  font-family: sans-serif;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+}
+.chat-msg.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.chat-msg.her {
+  background: #e8e8e8;
+  color: #1a1a1a;
+  align-self: flex-start;
+  border-bottom-left-radius: 6px;
+}
+.chat-msg.him {
+  background: #FFC629;
+  color: #1a1a1a;
+  align-self: flex-end;
+  border-bottom-right-radius: 6px;
+}
+.chat-time {
+  font-size: 10px;
+  color: #999;
+  text-align: center;
+  padding: 4px 0;
+  font-family: sans-serif;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.chat-time.visible { opacity: 1; }
+
+/* ===== PANEL 3: ENGAGEMENT ===== */
+.panel-engagement {
+  background: linear-gradient(145deg, #fdf6e3 0%, #f5e6c8 50%, #ede0d4 100%);
+}
+.panel-engagement .section-title {
+  font-family: var(--heading);
+  font-size: clamp(1.8rem, 5vw, 3.2rem);
+  color: #8b6914;
+  margin-bottom: 40px;
+  z-index: 2;
+}
+.polaroid-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  z-index: 2;
+  padding: 0 20px;
+}
+.polaroid {
+  background: #fff;
+  padding: 12px 12px 40px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  transition: transform 0.4s;
+}
+.polaroid:nth-child(1) { transform: rotate(-4deg); }
+.polaroid:nth-child(2) { transform: rotate(2deg); }
+.polaroid:nth-child(3) { transform: rotate(-1.5deg); }
+.polaroid:hover { transform: rotate(0deg) scale(1.05); }
+.polaroid-img {
+  width: min(200px, 26vw);
+  height: min(200px, 26vw);
+  border: 2px dashed #c4a35a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c4a35a;
+  font-family: var(--handwritten);
+  font-size: 1.2rem;
+  background: #faf3e0;
+}
+.polaroid-caption {
+  font-family: var(--handwritten);
+  font-size: 1rem;
+  color: #6d4c1d;
+  text-align: center;
+  margin-top: 8px;
+}
+.engagement-sparkle {
+  position: absolute;
+  width: 100%; height: 100%;
+  pointer-events: none;
+}
+
+/* ===== PANEL 4: STAR MAP ===== */
+.panel-stars {
+  background: #0a0e27;
+}
+#star-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+}
+.star-overlay {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  pointer-events: none;
+}
+.star-overlay .date {
+  font-family: var(--heading);
+  font-size: clamp(1.4rem, 4vw, 2.5rem);
+  color: #d4af37;
+  letter-spacing: 0.1em;
+}
+.star-overlay .tagline {
+  font-family: var(--body);
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: rgba(212,175,55,0.8);
+  font-style: italic;
+  margin-top: 8px;
+  font-weight: 300;
+}
+.star-overlay .constellations {
+  font-family: var(--body);
+  font-size: clamp(0.8rem, 2vw, 1.1rem);
+  color: rgba(212,175,55,0.5);
+  margin-top: 16px;
+  letter-spacing: 0.2em;
+}
+
+/* ===== PANEL 5: HONEYMOON ===== */
+.panel-honeymoon {
+  background: #f4e8d8;
+  position: relative;
+}
+.panel-honeymoon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg 30deg, rgba(180,120,60,0.03) 30deg 60deg)
+    0 0 / 80px 80px;
+  opacity: 0.7;
+}
+.honeymoon-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+}
+.honeymoon-title {
+  font-family: var(--heading);
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  color: #8b3a2a;
+  font-style: italic;
+}
+.honeymoon-subtitle {
+  font-family: var(--handwritten);
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  color: #6b4423;
+  margin-top: 4px;
+  margin-bottom: 24px;
+}
+.route-container {
+  position: relative;
+  width: min(500px, 90vw);
+  height: min(400px, 55vh);
+}
+.city-dot {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.city-marker {
+  width: 14px; height: 14px;
+  background: #c0392b;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.city-name {
+  font-family: var(--handwritten);
+  font-size: clamp(0.85rem, 2.5vw, 1.2rem);
+  color: #5d3a1a;
+  font-weight: 700;
+  white-space: nowrap;
+  background: rgba(255,255,255,0.7);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.city-photo {
+  width: min(60px, 14vw);
+  height: min(50px, 12vw);
+  border: 1.5px dashed #b07d4a;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #b07d4a;
+  background: rgba(255,255,255,0.5);
+  font-family: var(--handwritten);
+}
+.travel-emoji {
+  position: absolute;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  animation: float 4s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+#route-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+}
+
+/* ===== PANEL 6: BABY ===== */
+.panel-baby {
+  background: linear-gradient(160deg, #e8f5e9 0%, #e3f2fd 30%, #f3e5f5 60%, #fff9c4 100%);
+}
+#bubbles-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+}
+.baby-content {
+  z-index: 2;
+  text-align: center;
+}
+.baby-photo-frame {
+  width: min(200px, 50vw);
+  height: min(200px, 50vw);
+  border-radius: 50%;
+  border: 4px dashed #b39ddb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  background: rgba(255,255,255,0.5);
+  box-shadow: 0 0 60px rgba(179,157,219,0.3);
+  color: #b39ddb;
+  font-family: var(--handwritten);
+  font-size: 1.2rem;
+}
+.baby-content h2 {
+  font-family: var(--heading);
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  color: #5c6bc0;
+  margin-bottom: 12px;
+}
+.baby-name {
+  font-family: var(--handwritten);
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  color: #7e57c2;
+}
+
+/* ===== PANEL 7: FINALE ===== */
+.panel-finale {
+  background: linear-gradient(160deg, #4a0e0e 0%, #7b1a1a 40%, #5c1010 100%);
+}
+#hearts-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+}
+.finale-content {
+  z-index: 2;
+  text-align: center;
+  padding: 30px;
+  max-width: 600px;
+}
+.finale-content h1 {
+  font-family: var(--heading);
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, #d4af37, #f5d06b, #d4af37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+.finale-message {
+  font-family: var(--body);
+  font-size: clamp(1rem, 2.8vw, 1.35rem);
+  color: rgba(255,255,255,0.85);
+  line-height: 1.8;
+  font-weight: 300;
+}
+.beating-heart {
+  font-size: clamp(2.5rem, 7vw, 4rem);
+  display: inline-block;
+  animation: beat 1s ease-in-out infinite;
+  margin-top: 20px;
+}
+@keyframes beat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.15); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.1); }
+}
+</style>
+</head>
+<body>
+
+<button class="nav-arrow left" id="prevBtn" onclick="navigate(-1)">‹</button>
+<button class="nav-arrow right" id="nextBtn" onclick="navigate(1)">›</button>
+<div class="dots" id="dots"></div>
+
+<div id="slider">
+
+  <!-- PANEL 1: WELCOME -->
+  <div class="panel panel-welcome" data-panel="0">
+    <canvas id="petals-canvas"></canvas>
+    <h1 class="title">Happy Valentine's Day,<br>Haya</h1>
+    <p class="subtitle">A love story, told in moments</p>
+  </div>
+
+  <!-- PANEL 2: BUMBLE -->
+  <div class="panel panel-bumble" data-panel="1">
+    <p class="section-title">Where It All Started — November 2023</p>
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="bumble-header">
+          <div class="bumble-avatar">H</div>
+          <span class="bumble-name">Haya</span>
+        </div>
+        <div class="chat-area" id="chatArea">
+          <div class="chat-time" data-delay="0">Nov 2023, 8:42 PM</div>
+          <div class="chat-msg her" data-delay="400">Hey! Your profile made me smile 😊</div>
+          <div class="chat-msg him" data-delay="1200">Haha which part?</div>
+          <div class="chat-msg her" data-delay="2200">The part where you exist</div>
+          <div class="chat-msg him" data-delay="3200">Smooth 😂</div>
+          <div class="chat-msg her" data-delay="4200">Is it working?</div>
+          <div class="chat-msg him" data-delay="5200">...maybe 👀</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 3: ENGAGEMENT -->
+  <div class="panel panel-engagement" data-panel="2">
+    <h2 class="section-title">The Day She Said Yes 💍</h2>
+    <div class="polaroid-grid">
+      <div class="polaroid">
+        <div class="polaroid-img">Photo</div>
+        <p class="polaroid-caption">The moment</p>
+      </div>
+      <div class="polaroid">
+        <div class="polaroid-img">Photo</div>
+        <p class="polaroid-caption">She said yes!</p>
+      </div>
+      <div class="polaroid">
+        <div class="polaroid-img">Photo</div>
+        <p class="polaroid-caption">Together forever</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 4: STAR MAP -->
+  <div class="panel panel-stars" data-panel="3">
+    <canvas id="star-canvas"></canvas>
+    <div class="star-overlay">
+      <div class="date">December 17, 2024 — Karachi</div>
+      <div class="tagline">The stars that witnessed our forever</div>
+      <div class="constellations">✦ Orion · Taurus · Gemini ✦</div>
+    </div>
+  </div>
+
+  <!-- PANEL 5: HONEYMOON -->
+  <div class="panel panel-honeymoon" data-panel="4">
+    <div class="honeymoon-content">
+      <h2 class="honeymoon-title">La Luna de Miel</h2>
+      <p class="honeymoon-subtitle">Our Honeymoon Trail</p>
+      <div class="route-container" id="routeContainer">
+        <svg id="route-svg"></svg>
+        <div class="city-dot" style="left:10%;top:25%">
+          <div class="city-marker"></div>
+          <span class="city-name">Barcelona</span>
+          <div class="city-photo">Photo</div>
+        </div>
+        <div class="city-dot" style="left:30%;top:15%">
+          <div class="city-marker"></div>
+          <span class="city-name">Palafrugell</span>
+          <div class="city-photo">Photo</div>
+        </div>
+        <div class="city-dot" style="left:20%;top:55%">
+          <div class="city-marker"></div>
+          <span class="city-name">Seville</span>
+          <div class="city-photo">Photo</div>
+        </div>
+        <div class="city-dot" style="left:45%;top:70%">
+          <div class="city-marker"></div>
+          <span class="city-name">Marbella</span>
+          <div class="city-photo">Photo</div>
+        </div>
+        <div class="city-dot" style="left:75%;top:20%">
+          <div class="city-marker"></div>
+          <span class="city-name">London</span>
+          <div class="city-photo">Photo</div>
+        </div>
+        <span class="travel-emoji" style="left:5%;top:80%">🍊</span>
+        <span class="travel-emoji" style="left:55%;top:50%;animation-delay:1s">🥂</span>
+        <span class="travel-emoji" style="left:85%;top:60%;animation-delay:2s">💃</span>
+        <span class="travel-emoji" style="left:60%;top:10%;animation-delay:0.5s">✈️</span>
+        <span class="travel-emoji" style="left:35%;top:40%;animation-delay:1.5s">☀️</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 6: BABY NURI -->
+  <div class="panel panel-baby" data-panel="5">
+    <canvas id="bubbles-canvas"></canvas>
+    <div class="baby-content">
+      <div class="baby-photo-frame">Photo</div>
+      <h2>Our Greatest Adventure</h2>
+      <div class="baby-name">Baby Nuri 💛</div>
+    </div>
+  </div>
+
+  <!-- PANEL 7: FINALE -->
+  <div class="panel panel-finale" data-panel="6">
+    <canvas id="hearts-canvas"></canvas>
+    <div class="finale-content">
+      <h1>I Love You, Haya</h1>
+      <p class="finale-message">From a swipe on Bumble to building a family — every moment with you is a gift I'll never stop being grateful for. You're my home, my heart, my everything.<br><br>Happy Valentine's Day, my love.<br>— Riz ❤️</p>
+      <div class="beating-heart">❤️</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// === NAVIGATION ===
+let current = 0;
+const total = 7;
+const slider = document.getElementById('slider');
+const dotsEl = document.getElementById('dots');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const visited = new Set();
+
+for (let i = 0; i < total; i++) {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' active' : '');
+  d.onclick = () => goTo(i);
+  dotsEl.appendChild(d);
+}
+
+function goTo(idx) {
+  current = Math.max(0, Math.min(total - 1, idx));
+  slider.style.transform = `translateX(-${current * 100}vw)`;
+  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+  prevBtn.disabled = current === 0;
+  nextBtn.disabled = current === total - 1;
+  if (!visited.has(current)) {
+    visited.add(current);
+    onEnterPanel(current);
+  }
+}
+
+function navigate(dir) { goTo(current + dir); }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') navigate(1);
+  if (e.key === 'ArrowLeft') navigate(-1);
+});
+
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+document.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  if (Math.abs(dx) > 50) navigate(dx < 0 ? 1 : -1);
+}, { passive: true });
+
+function onEnterPanel(idx) {
+  if (idx === 1) animateChat();
+}
+
+// === PANEL 1: PETALS ===
+(function() {
+  const c = document.getElementById('petals-canvas');
+  const ctx = c.getContext('2d');
+  let petals = [];
+  function resize() { c.width = c.offsetWidth; c.height = c.offsetHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  for (let i = 0; i < 40; i++) {
+    petals.push({
+      x: Math.random() * c.width,
+      y: Math.random() * c.height,
+      r: Math.random() * 8 + 4,
+      dx: Math.random() * 0.5 - 0.25,
+      dy: Math.random() * 0.8 + 0.3,
+      rot: Math.random() * Math.PI * 2,
+      dr: Math.random() * 0.02 - 0.01,
+      opacity: Math.random() * 0.4 + 0.2,
+      color: ['#f48fb1','#f8bbd0','#e91e63','#ff80ab','#fce4ec'][Math.floor(Math.random()*5)]
+    });
+  }
+
+  function drawPetal(p) {
+    ctx.save();
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.rot);
+    ctx.globalAlpha = p.opacity;
+    ctx.fillStyle = p.color;
+    ctx.beginPath();
+    ctx.moveTo(0, -p.r);
+    ctx.bezierCurveTo(p.r * 0.8, -p.r * 0.8, p.r * 0.6, p.r * 0.3, 0, p.r);
+    ctx.bezierCurveTo(-p.r * 0.6, p.r * 0.3, -p.r * 0.8, -p.r * 0.8, 0, -p.r);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, c.width, c.height);
+    petals.forEach(p => {
+      p.x += p.dx;
+      p.y += p.dy;
+      p.rot += p.dr;
+      if (p.y > c.height + 20) { p.y = -20; p.x = Math.random() * c.width; }
+      if (p.x < -20) p.x = c.width + 20;
+      if (p.x > c.width + 20) p.x = -20;
+      drawPetal(p);
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+// === PANEL 2: CHAT ANIMATION ===
+function animateChat() {
+  const msgs = document.querySelectorAll('#chatArea .chat-msg, #chatArea .chat-time');
+  msgs.forEach(m => {
+    const delay = parseInt(m.dataset.delay || 0);
+    setTimeout(() => m.classList.add('visible'), delay);
+  });
+}
+
+// === PANEL 4: STAR MAP ===
+(function() {
+  const stars = [{"x":0.4191,"y":0.6297,"s":0.5},{"x":0.4191,"y":0.6837,"s":0.5},{"x":0.421,"y":0.6508,"s":0.5},{"x":0.423,"y":0.6285,"s":0.5},{"x":0.4401,"y":0.4778,"s":1.2},{"x":0.4624,"y":0.3476,"s":1.2},{"x":0.4291,"y":0.8413,"s":0.8},{"x":0.4281,"y":0.6748,"s":0.5},{"x":0.4383,"y":0.5372,"s":1.2},{"x":0.4418,"y":0.516,"s":0.5},{"x":0.4317,"y":0.6918,"s":0.5},{"x":0.4532,"y":0.4381,"s":0.5},{"x":0.4532,"y":0.4463,"s":0.5},{"x":0.4385,"y":0.6436,"s":0.8},{"x":0.4472,"y":0.8273,"s":0.8},{"x":0.4469,"y":0.8189,"s":1.2},{"x":0.4474,"y":0.765,"s":0.5},{"x":0.4543,"y":0.8597,"s":0.5},{"x":0.4612,"y":0.9626,"s":0.5},{"x":0.4611,"y":0.9627,"s":0.5},{"x":0.4729,"y":0.3706,"s":0.5},{"x":0.4785,"y":0.3323,"s":0.5},{"x":0.4679,"y":0.461,"s":0.5},{"x":0.476,"y":0.3738,"s":0.8},{"x":0.468,"y":0.4797,"s":0.5},{"x":0.4691,"y":0.4732,"s":0.8},{"x":0.4795,"y":0.3622,"s":1.2},{"x":0.4644,"y":0.8417,"s":0.5},{"x":0.478,"y":0.3891,"s":0.5},{"x":0.4697,"y":0.9194,"s":0.5},{"x":0.4778,"y":0.4045,"s":0.5},{"x":0.4654,"y":0.6876,"s":1.2},{"x":0.4665,"y":0.6526,"s":0.5},{"x":0.4791,"y":0.3991,"s":0.5},{"x":0.475,"y":0.5013,"s":0.5},{"x":0.4735,"y":0.5719,"s":0.5},{"x":0.4829,"y":0.3875,"s":0.5},{"x":0.4853,"y":0.3569,"s":0.8},{"x":0.4809,"y":0.4304,"s":0.5},{"x":0.4772,"y":0.61,"s":0.5},{"x":0.4887,"y":0.3418,"s":0.5},{"x":0.4892,"y":0.3518,"s":0.5},{"x":0.4902,"y":0.3509,"s":0.5},{"x":0.4906,"y":0.3438,"s":1.2},{"x":0.4861,"y":0.4417,"s":0.8},{"x":0.4843,"y":0.5052,"s":0.5},{"x":0.4826,"y":0.7451,"s":0.5},{"x":0.4887,"y":0.571,"s":0.5},{"x":0.4916,"y":0.8453,"s":0.8},{"x":0.4944,"y":0.9027,"s":0.8},{"x":0.4943,"y":0.6509,"s":0.8},{"x":0.4998,"y":0.2143,"s":0.5},{"x":0.4971,"y":0.4044,"s":0.5},{"x":0.4967,"y":0.4542,"s":1.2},{"x":0.4985,"y":0.3695,"s":0.5},{"x":0.4979,"y":0.5154,"s":0.5},{"x":0.4983,"y":0.4775,"s":0.5},{"x":0.5002,"y":0.5006,"s":0.5},{"x":0.5015,"y":0.8377,"s":0.5},{"x":0.5055,"y":0.4894,"s":0.5},{"x":0.504,"y":0.3555,"s":0.5},{"x":0.5067,"y":0.4118,"s":0.5},{"x":0.5117,"y":0.6417,"s":0.8},{"x":0.5136,"y":0.6715,"s":0.5},{"x":0.5072,"y":0.3461,"s":1.2},{"x":0.5057,"y":0.3088,"s":0.5},{"x":0.5108,"y":0.4122,"s":0.5},{"x":0.5161,"y":0.8242,"s":0.8},{"x":0.5177,"y":0.5784,"s":0.5},{"x":0.5187,"y":0.8606,"s":0.8},{"x":0.5182,"y":0.5392,"s":0.8},{"x":0.5121,"y":0.3506,"s":0.5},{"x":0.5187,"y":0.4291,"s":0.5},{"x":0.5237,"y":0.9175,"s":2.5},{"x":0.5178,"y":0.3978,"s":0.8},{"x":0.522,"y":0.4325,"s":0.5},{"x":0.5298,"y":0.5809,"s":0.5},{"x":0.5224,"y":0.4237,"s":0.5},{"x":0.5324,"y":0.6212,"s":0.5},{"x":0.5211,"y":0.3885,"s":0.5},{"x":0.5348,"y":0.6777,"s":0.8},{"x":0.5335,"y":0.565,"s":0.5},{"x":0.5408,"y":0.6529,"s":0.5},{"x":0.5429,"y":0.6512,"s":0.8},{"x":0.5361,"y":0.4783,"s":0.8},{"x":0.5396,"y":0.5215,"s":0.8},{"x":0.5434,"y":0.5904,"s":0.5},{"x":0.5436,"y":0.8435,"s":0.5},{"x":0.5214,"y":0.3289,"s":0.8},{"x":0.5403,"y":0.5151,"s":1.2},{"x":0.5444,"y":0.8786,"s":0.8},{"x":0.5189,"y":0.3049,"s":0.5},{"x":0.5497,"y":0.7099,"s":0.5},{"x":0.5472,"y":0.8506,"s":0.5},{"x":0.5426,"y":0.5031,"s":0.5},{"x":0.5421,"y":0.9518,"s":1.2},{"x":0.5535,"y":0.7027,"s":0.8},{"x":0.5197,"y":0.2937,"s":0.5},{"x":0.5527,"y":0.5918,"s":0.8},{"x":0.5318,"y":0.3702,"s":0.5},{"x":0.519,"y":0.2861,"s":0.8},{"x":0.54,"y":0.4232,"s":1.2},{"x":0.5586,"y":0.745,"s":0.5},{"x":0.5516,"y":0.5029,"s":1.2},{"x":0.5461,"y":0.4419,"s":0.5},{"x":0.5528,"y":0.4922,"s":0.5},{"x":0.5485,"y":0.454,"s":0.8},{"x":0.5534,"y":0.4735,"s":0.5},{"x":0.5629,"y":0.5646,"s":0.5},{"x":0.5462,"y":0.414,"s":0.5},{"x":0.5663,"y":0.8794,"s":0.8},{"x":0.5555,"y":0.4564,"s":0.5},{"x":0.5559,"y":0.4579,"s":0.5},{"x":0.5507,"y":0.3862,"s":0.5},{"x":0.5829,"y":0.6593,"s":0.5},{"x":0.5798,"y":0.8548,"s":0.5},{"x":0.5793,"y":0.5649,"s":0.5},{"x":0.5349,"y":0.308,"s":0.5},{"x":0.5017,"y":0.1967,"s":1.8},{"x":0.5906,"y":0.6733,"s":0.5},{"x":0.5932,"y":0.7398,"s":0.5},{"x":0.5889,"y":0.5767,"s":0.5},{"x":0.5951,"y":0.5999,"s":0.5},{"x":0.5988,"y":0.6566,"s":0.5},{"x":0.5966,"y":0.8251,"s":0.5},{"x":0.5988,"y":0.8064,"s":0.5},{"x":0.5724,"y":0.4272,"s":0.5},{"x":0.5982,"y":0.5864,"s":0.8},{"x":0.5838,"y":0.4802,"s":0.5},{"x":0.6045,"y":0.666,"s":0.5},{"x":0.5649,"y":0.3878,"s":0.5},{"x":0.5966,"y":0.5557,"s":0.5},{"x":0.6064,"y":0.6894,"s":0.5},{"x":0.5868,"y":0.4729,"s":0.5},{"x":0.6109,"y":0.7632,"s":0.5},{"x":0.5904,"y":0.481,"s":0.8},{"x":0.5811,"y":0.4337,"s":0.5},{"x":0.5613,"y":0.3573,"s":0.8},{"x":0.6138,"y":0.7017,"s":0.5},{"x":0.585,"y":0.4474,"s":0.5},{"x":0.5676,"y":0.3705,"s":0.8},{"x":0.6179,"y":0.6413,"s":0.8},{"x":0.6193,"y":0.8106,"s":1.2},{"x":0.5865,"y":0.4263,"s":0.5},{"x":0.5915,"y":0.4454,"s":0.5},{"x":0.6041,"y":0.5047,"s":0.5},{"x":0.6134,"y":0.559,"s":0.5},{"x":0.6191,"y":0.5802,"s":1.2},{"x":0.6277,"y":0.7153,"s":0.5},{"x":0.5735,"y":0.365,"s":1.2},{"x":0.5927,"y":0.4284,"s":0.8},{"x":0.5692,"y":0.3508,"s":0.5},{"x":0.5927,"y":0.4187,"s":1.2},{"x":0.582,"y":0.3811,"s":0.5},{"x":0.5888,"y":0.4016,"s":0.8},{"x":0.5969,"y":0.4237,"s":0.5},{"x":0.6181,"y":0.5093,"s":0.5},{"x":0.5397,"y":0.2691,"s":0.5},{"x":0.6394,"y":0.7447,"s":0.8},{"x":0.6202,"y":0.5029,"s":0.5},{"x":0.6411,"y":0.6392,"s":0.5},{"x":0.6473,"y":0.7091,"s":0.5},{"x":0.6099,"y":0.445,"s":0.5},{"x":0.639,"y":0.581,"s":0.5},{"x":0.6487,"y":0.7051,"s":0.8},{"x":0.6435,"y":0.8305,"s":0.5},{"x":0.5612,"y":0.3078,"s":0.5},{"x":0.6174,"y":0.4669,"s":0.5},{"x":0.6002,"y":0.4052,"s":0.5},{"x":0.5923,"y":0.3763,"s":1.8},{"x":0.6411,"y":0.5541,"s":0.8},{"x":0.6432,"y":0.5504,"s":0.8},{"x":0.5962,"y":0.3787,"s":0.5},{"x":0.5772,"y":0.3311,"s":0.5},{"x":0.5964,"y":0.3765,"s":0.5},{"x":0.5797,"y":0.3356,"s":0.5},{"x":0.5998,"y":0.3826,"s":0.5},{"x":0.6573,"y":0.6193,"s":0.5},{"x":0.6445,"y":0.5352,"s":0.5},{"x":0.6622,"y":0.6407,"s":0.8},{"x":0.6666,"y":0.7041,"s":0.5},{"x":0.6038,"y":0.3801,"s":0.5},{"x":0.6615,"y":0.592,"s":0.5},{"x":0.666,"y":0.8146,"s":0.5},{"x":0.6765,"y":0.7632,"s":0.5},{"x":0.6313,"y":0.4396,"s":0.5},{"x":0.675,"y":0.7963,"s":0.5},{"x":0.6091,"y":0.3799,"s":0.8},{"x":0.6752,"y":0.641,"s":0.8},{"x":0.6355,"y":0.4463,"s":0.8},{"x":0.6472,"y":0.4818,"s":0.8},{"x":0.62,"y":0.4016,"s":0.8},{"x":0.6471,"y":0.4802,"s":0.5},{"x":0.6478,"y":0.4804,"s":0.8},{"x":0.5786,"y":0.3119,"s":0.5},{"x":0.6799,"y":0.6528,"s":0.5},{"x":0.6488,"y":0.4821,"s":0.5},{"x":0.6834,"y":0.7129,"s":0.5},{"x":0.6498,"y":0.4811,"s":1.2},{"x":0.6821,"y":0.799,"s":0.5},{"x":0.6516,"y":0.4808,"s":0.8},{"x":0.6839,"y":0.7901,"s":0.5},{"x":0.575,"y":0.3015,"s":0.5},{"x":0.5601,"y":0.276,"s":0.5},{"x":0.6924,"y":0.7205,"s":0.5},{"x":0.6452,"y":0.4449,"s":1.2},{"x":0.685,"y":0.6052,"s":0.5},{"x":0.5896,"y":0.3184,"s":0.5},{"x":0.5848,"y":0.31,"s":0.5},{"x":0.6348,"y":0.4084,"s":1.2},{"x":0.6957,"y":0.659,"s":1.2},{"x":0.6432,"y":0.4263,"s":0.8},{"x":0.7005,"y":0.7171,"s":0.5},{"x":0.6782,"y":0.5298,"s":0.8},{"x":0.6881,"y":0.5598,"s":0.8},{"x":0.6702,"y":0.4847,"s":0.5},{"x":0.6204,"y":0.3611,"s":0.5},{"x":0.6277,"y":0.3716,"s":0.8},{"x":0.7069,"y":0.8314,"s":0.5},{"x":0.7099,"y":0.6219,"s":0.5},{"x":0.6973,"y":0.5412,"s":0.5},{"x":0.7106,"y":0.8341,"s":0.8},{"x":0.7155,"y":0.6396,"s":0.5},{"x":0.6478,"y":0.4001,"s":0.5},{"x":0.6306,"y":0.3663,"s":0.5},{"x":0.7149,"y":0.6258,"s":0.5},{"x":0.6997,"y":0.5425,"s":0.5},{"x":0.6997,"y":0.9014,"s":0.5},{"x":0.6857,"y":0.4872,"s":0.5},{"x":0.7224,"y":0.7777,"s":0.8},{"x":0.6285,"y":0.357,"s":0.5},{"x":0.6958,"y":0.5092,"s":0.8},{"x":0.6778,"y":0.4555,"s":0.5},{"x":0.6645,"y":0.4235,"s":0.5},{"x":0.6398,"y":0.3718,"s":0.5},{"x":0.6965,"y":0.4992,"s":0.8},{"x":0.7306,"y":0.7798,"s":0.8},{"x":0.6979,"y":0.4992,"s":0.5},{"x":0.6916,"y":0.4763,"s":0.5},{"x":0.6987,"y":0.4965,"s":0.5},{"x":0.6917,"y":0.4736,"s":0.5},{"x":0.7032,"y":0.507,"s":0.5},{"x":0.7048,"y":0.5111,"s":0.5},{"x":0.7045,"y":0.5027,"s":0.5},{"x":0.7052,"y":0.5045,"s":0.8},{"x":0.7002,"y":0.4894,"s":0.8},{"x":0.7055,"y":0.5049,"s":0.8},{"x":0.7071,"y":0.5027,"s":0.5},{"x":0.73,"y":0.5823,"s":0.5},{"x":0.7454,"y":0.7531,"s":0.5},{"x":0.713,"y":0.5079,"s":0.5},{"x":0.748,"y":0.7584,"s":0.8},{"x":0.7221,"y":0.5299,"s":0.5},{"x":0.7127,"y":0.4992,"s":2.5},{"x":0.7392,"y":0.5986,"s":0.8},{"x":0.6638,"y":0.3876,"s":0.5},{"x":0.7216,"y":0.5175,"s":0.5},{"x":0.7499,"y":0.6588,"s":0.8},{"x":0.7496,"y":0.6462,"s":0.5},{"x":0.7175,"y":0.5006,"s":0.5},{"x":0.7553,"y":0.6902,"s":0.5},{"x":0.7461,"y":0.8368,"s":0.5},{"x":0.7083,"y":0.4664,"s":0.5},{"x":0.7513,"y":0.5958,"s":0.5},{"x":0.7442,"y":0.5408,"s":0.8},{"x":0.684,"y":0.3977,"s":0.5},{"x":0.7423,"y":0.5306,"s":0.5},{"x":0.7479,"y":0.5472,"s":0.8},{"x":0.7358,"y":0.5033,"s":0.5},{"x":0.6883,"y":0.3997,"s":0.5},{"x":0.7637,"y":0.6059,"s":0.5},{"x":0.5995,"y":0.2781,"s":0.5},{"x":0.7563,"y":0.5627,"s":0.8},{"x":0.7456,"y":0.5227,"s":0.5},{"x":0.7417,"y":0.5053,"s":0.5},{"x":0.701,"y":0.4131,"s":1.2},{"x":0.6437,"y":0.3261,"s":0.5},{"x":0.7629,"y":0.5651,"s":0.5},{"x":0.691,"y":0.3912,"s":0.5},{"x":0.7798,"y":0.6452,"s":0.5},{"x":0.7859,"y":0.6912,"s":0.5},{"x":0.7774,"y":0.6135,"s":0.5},{"x":0.6768,"y":0.3645,"s":0.8},{"x":0.685,"y":0.3758,"s":0.8},{"x":0.7336,"y":0.463,"s":0.5},{"x":0.6246,"y":0.2969,"s":0.5},{"x":0.7865,"y":0.7957,"s":0.5},{"x":0.748,"y":0.4922,"s":0.5},{"x":0.7924,"y":0.7058,"s":0.8},{"x":0.6878,"y":0.373,"s":0.8},{"x":0.6563,"y":0.3302,"s":0.5},{"x":0.7448,"y":0.475,"s":0.5},{"x":0.7843,"y":0.5998,"s":1.2},{"x":0.7901,"y":0.6209,"s":0.5},{"x":0.7537,"y":0.4889,"s":0.5},{"x":0.7975,"y":0.6388,"s":0.5},{"x":0.8015,"y":0.6656,"s":0.8},{"x":0.7997,"y":0.6452,"s":0.5},{"x":0.7812,"y":0.5536,"s":0.5},{"x":0.7014,"y":0.3809,"s":0.5},{"x":0.7974,"y":0.6163,"s":2.5},{"x":0.681,"y":0.3476,"s":2.5},{"x":0.8066,"y":0.7937,"s":0.5},{"x":0.8004,"y":0.6073,"s":0.8},{"x":0.7201,"y":0.4006,"s":0.5},{"x":0.7014,"y":0.3708,"s":0.5},{"x":0.7505,"y":0.4521,"s":0.5},{"x":0.8095,"y":0.6455,"s":0.5},{"x":0.8152,"y":0.6976,"s":0.5},{"x":0.7979,"y":0.5684,"s":0.5},{"x":0.7932,"y":0.546,"s":0.5},{"x":0.811,"y":0.6114,"s":0.5},{"x":0.8048,"y":0.579,"s":0.8},{"x":0.7987,"y":0.5546,"s":0.5},{"x":0.7913,"y":0.5295,"s":1.8},{"x":0.7411,"y":0.4173,"s":1.8},{"x":0.7995,"y":0.5467,"s":0.5},{"x":0.7602,"y":0.4481,"s":0.5},{"x":0.8274,"y":0.6938,"s":1.2},{"x":0.8105,"y":0.5695,"s":0.5},{"x":0.7998,"y":0.5291,"s":0.5},{"x":0.8272,"y":0.8008,"s":0.8},{"x":0.8225,"y":0.6059,"s":0.5},{"x":0.8126,"y":0.5639,"s":1.2},{"x":0.7738,"y":0.4619,"s":0.5},{"x":0.7372,"y":0.397,"s":0.5},{"x":0.8332,"y":0.6735,"s":1.2},{"x":0.7981,"y":0.5078,"s":0.5},{"x":0.8255,"y":0.5969,"s":0.5},{"x":0.7976,"y":0.5052,"s":0.8},{"x":0.825,"y":0.5931,"s":0.5},{"x":0.8253,"y":0.5932,"s":0.5},{"x":0.8245,"y":0.5897,"s":0.5},{"x":0.826,"y":0.5962,"s":1.2},{"x":0.8202,"y":0.5675,"s":1.8},{"x":0.8013,"y":0.5077,"s":0.5},{"x":0.7736,"y":0.4459,"s":1.2},{"x":0.8262,"y":0.5749,"s":0.8},{"x":0.8331,"y":0.6032,"s":0.5},{"x":0.815,"y":0.5353,"s":0.5},{"x":0.8421,"y":0.7917,"s":1.2},{"x":0.8282,"y":0.5701,"s":1.8},{"x":0.8269,"y":0.5652,"s":0.5},{"x":0.79,"y":0.4669,"s":0.5},{"x":0.8248,"y":0.5491,"s":0.5},{"x":0.8542,"y":0.7047,"s":0.8},{"x":0.8543,"y":0.6508,"s":0.8},{"x":0.8502,"y":0.6161,"s":1.2},{"x":0.7767,"y":0.4218,"s":0.5},{"x":0.7288,"y":0.3556,"s":0.5},{"x":0.8103,"y":0.4823,"s":0.5},{"x":0.8587,"y":0.8078,"s":0.8},{"x":0.7371,"y":0.3623,"s":0.5},{"x":0.8654,"y":0.6929,"s":0.8},{"x":0.7308,"y":0.3541,"s":0.8},{"x":0.8388,"y":0.542,"s":0.5},{"x":0.8646,"y":0.7924,"s":0.5},{"x":0.7719,"y":0.4043,"s":0.5},{"x":0.7956,"y":0.4393,"s":0.5},{"x":0.668,"y":0.2879,"s":0.5},{"x":0.8307,"y":0.5081,"s":2.5},{"x":0.8695,"y":0.6442,"s":0.8},{"x":0.7822,"y":0.4088,"s":0.5},{"x":0.6764,"y":0.29,"s":0.8},{"x":0.715,"y":0.3249,"s":1.8},{"x":0.7448,"y":0.3564,"s":1.2},{"x":0.7113,"y":0.3207,"s":0.5},{"x":0.86,"y":0.5688,"s":0.5},{"x":0.8747,"y":0.618,"s":0.5},{"x":0.8354,"y":0.4909,"s":0.5},{"x":0.8074,"y":0.4333,"s":0.5},{"x":0.7977,"y":0.4174,"s":0.5},{"x":0.8864,"y":0.6589,"s":0.5},{"x":0.887,"y":0.6473,"s":0.5},{"x":0.8283,"y":0.4589,"s":0.5},{"x":0.8357,"y":0.4589,"s":0.5},{"x":0.83,"y":0.4483,"s":0.5},{"x":0.8901,"y":0.5834,"s":0.8},{"x":0.8126,"y":0.4129,"s":0.8},{"x":0.788,"y":0.3786,"s":0.5},{"x":0.6125,"y":0.2335,"s":0.5},{"x":0.664,"y":0.2619,"s":0.5},{"x":0.8923,"y":0.5582,"s":0.5},{"x":0.9196,"y":0.6666,"s":1.8},{"x":0.822,"y":0.4063,"s":1.2},{"x":0.8802,"y":0.507,"s":0.5},{"x":0.7125,"y":0.2901,"s":0.5},{"x":0.9159,"y":0.5823,"s":0.8},{"x":0.8376,"y":0.4131,"s":0.5},{"x":0.8865,"y":0.4834,"s":0.5},{"x":0.8629,"y":0.426,"s":1.8},{"x":0.949,"y":0.6659,"s":0.5},{"x":0.9472,"y":0.6321,"s":0.5},{"x":0.7534,"y":0.3031,"s":0.5},{"x":0.8905,"y":0.4612,"s":0.5},{"x":0.8358,"y":0.3743,"s":0.8},{"x":0.8832,"y":0.4386,"s":0.5},{"x":0.8863,"y":0.4394,"s":0.8},{"x":0.6715,"y":0.2434,"s":0.5},{"x":0.9067,"y":0.4673,"s":0.5},{"x":0.9258,"y":0.504,"s":0.5},{"x":0.7648,"y":0.2954,"s":0.5},{"x":0.8047,"y":0.3247,"s":0.8},{"x":0.8988,"y":0.429,"s":0.5},{"x":0.6806,"y":0.2383,"s":0.5},{"x":0.7523,"y":0.2772,"s":0.5},{"x":0.5763,"y":0.2027,"s":0.5},{"x":0.9729,"y":0.5415,"s":0.5},{"x":0.88,"y":0.3773,"s":0.5},{"x":0.8403,"y":0.3216,"s":0.5},{"x":0.7924,"y":0.2839,"s":0.5},{"x":0.9785,"y":0.5056,"s":0.5},{"x":0.9177,"y":0.3842,"s":0.8},{"x":0.893,"y":0.3515,"s":0.8},{"x":0.9638,"y":0.4212,"s":0.5},{"x":0.8681,"y":0.3157,"s":0.8},{"x":0.7443,"y":0.237,"s":0.5},{"x":0.9709,"y":0.4263,"s":1.2},{"x":0.9697,"y":0.4207,"s":0.5},{"x":0.8487,"y":0.2938,"s":0.5},{"x":0.9574,"y":0.3983,"s":0.5},{"x":0.5452,"y":0.1911,"s":0.5},{"x":0.853,"y":0.2865,"s":1.8},{"x":0.8839,"y":0.3069,"s":0.5},{"x":0.8405,"y":0.2699,"s":0.5},{"x":0.6909,"y":0.2026,"s":0.5},{"x":0.8794,"y":0.288,"s":0.5},{"x":0.9082,"y":0.3076,"s":0.8},{"x":0.8867,"y":0.2891,"s":1.8},{"x":0.9459,"y":0.3367,"s":0.5},{"x":0.903,"y":0.2833,"s":0.5},{"x":0.9061,"y":0.2636,"s":0.5},{"x":0.7435,"y":0.1894,"s":0.5},{"x":0.807,"y":0.1862,"s":0.5},{"x":0.6822,"y":0.1617,"s":0.8},{"x":0.6572,"y":0.1551,"s":0.5},{"x":0.7765,"y":0.1314,"s":0.8},{"x":0.6325,"y":0.1435,"s":0.5},{"x":0.7838,"y":0.1255,"s":0.8},{"x":0.7477,"y":0.1196,"s":0.5},{"x":0.6345,"y":0.1376,"s":0.5},{"x":0.659,"y":0.131,"s":0.5},{"x":0.7278,"y":0.113,"s":0.5},{"x":0.6575,"y":0.1139,"s":0.8},{"x":0.7432,"y":0.0898,"s":0.8},{"x":0.6119,"y":0.1295,"s":0.5},{"x":0.7396,"y":0.0879,"s":0.5},{"x":0.5443,"y":0.1634,"s":0.5},{"x":0.6801,"y":0.0865,"s":0.8},{"x":0.6216,"y":0.0846,"s":0.5},{"x":0.5616,"y":0.1263,"s":0.5},{"x":0.6217,"y":0.0385,"s":1.8},{"x":0.5667,"y":0.0719,"s":0.8},{"x":0.527,"y":0.0594,"s":0.8},{"x":0.5258,"y":0.0609,"s":0.5},{"x":0.48,"y":0.116,"s":0.5},{"x":0.4688,"y":0.1062,"s":0.5},{"x":0.4545,"y":0.1009,"s":1.2},{"x":0.4186,"y":0.0503,"s":0.5},{"x":0.4322,"y":0.0958,"s":0.8},{"x":0.451,"y":0.1341,"s":0.5},{"x":0.3335,"y":0.0525,"s":0.5},{"x":0.4324,"y":0.1344,"s":0.5},{"x":0.3431,"y":0.0835,"s":1.2},{"x":0.3891,"y":0.1122,"s":0.5},{"x":0.3579,"y":0.1067,"s":0.5},{"x":0.3005,"y":0.0893,"s":0.5},{"x":0.4606,"y":0.1649,"s":0.5},{"x":0.3572,"y":0.119,"s":0.5},{"x":0.2774,"y":0.1067,"s":0.5},{"x":0.3581,"y":0.1293,"s":0.8},{"x":0.2577,"y":0.134,"s":1.2},{"x":0.2795,"y":0.1368,"s":0.5},{"x":0.4817,"y":0.1842,"s":0.5},{"x":0.2793,"y":0.1369,"s":0.5},{"x":0.3739,"y":0.1524,"s":0.5},{"x":0.2089,"y":0.1477,"s":0.8},{"x":0.3952,"y":0.1595,"s":0.5},{"x":0.2915,"y":0.1587,"s":0.8},{"x":0.1447,"y":0.1872,"s":0.8},{"x":0.2529,"y":0.1647,"s":1.2},{"x":0.1099,"y":0.2301,"s":0.5},{"x":0.3432,"y":0.1743,"s":0.5},{"x":0.1494,"y":0.2261,"s":0.5},{"x":0.3878,"y":0.1783,"s":0.5},{"x":0.3966,"y":0.1787,"s":0.8},{"x":0.307,"y":0.1853,"s":0.5},{"x":0.3512,"y":0.1822,"s":0.5},{"x":0.2968,"y":0.1948,"s":0.5},{"x":0.1788,"y":0.2405,"s":2.5},{"x":0.1891,"y":0.2468,"s":0.5},{"x":0.1888,"y":0.247,"s":0.5},{"x":0.1764,"y":0.2543,"s":0.5},{"x":0.0726,"y":0.3311,"s":0.5},{"x":0.1096,"y":0.3006,"s":0.5},{"x":0.0607,"y":0.3462,"s":0.5},{"x":0.1541,"y":0.2767,"s":0.8},{"x":0.3153,"y":0.2069,"s":0.5},{"x":0.2623,"y":0.2258,"s":0.5},{"x":0.3885,"y":0.1949,"s":0.5},{"x":0.1789,"y":0.2687,"s":0.5},{"x":0.0959,"y":0.332,"s":0.5},{"x":0.222,"y":0.2461,"s":0.5},{"x":0.1577,"y":0.2905,"s":0.8},{"x":0.0617,"y":0.3811,"s":0.5},{"x":0.1555,"y":0.2941,"s":0.5},{"x":0.0643,"y":0.3954,"s":1.2},{"x":0.3686,"y":0.2085,"s":0.8},{"x":0.2058,"y":0.2822,"s":0.5},{"x":0.4022,"y":0.2025,"s":0.5},{"x":0.1156,"y":0.3647,"s":0.5},{"x":0.2022,"y":0.2887,"s":0.5},{"x":0.2871,"y":0.2409,"s":0.8},{"x":0.3586,"y":0.2164,"s":0.5},{"x":0.1648,"y":0.3328,"s":0.5},{"x":0.0527,"y":0.4872,"s":0.8},{"x":0.0452,"y":0.5079,"s":0.5},{"x":0.1459,"y":0.3614,"s":0.5},{"x":0.2834,"y":0.256,"s":0.8},{"x":0.1635,"y":0.3475,"s":0.8},{"x":0.1957,"y":0.3196,"s":0.5},{"x":0.3829,"y":0.2157,"s":0.5},{"x":0.082,"y":0.466,"s":0.5},{"x":0.2786,"y":0.2662,"s":0.5},{"x":0.0588,"y":0.5274,"s":0.5},{"x":0.0444,"y":0.5704,"s":0.5},{"x":0.1825,"y":0.3461,"s":0.5},{"x":0.1312,"y":0.4079,"s":0.5},{"x":0.1303,"y":0.4118,"s":0.5},{"x":0.2201,"y":0.3196,"s":0.5},{"x":0.2578,"y":0.2905,"s":1.2},{"x":0.1121,"y":0.4563,"s":1.2},{"x":0.1426,"y":0.4119,"s":0.8},{"x":0.389,"y":0.2219,"s":0.8},{"x":0.1131,"y":0.4706,"s":2.5},{"x":0.1631,"y":0.3938,"s":0.5},{"x":0.0925,"y":0.5223,"s":0.8},{"x":0.1717,"y":0.3885,"s":0.5},{"x":0.117,"y":0.4758,"s":0.5},{"x":0.1124,"y":0.4894,"s":0.8},{"x":0.2994,"y":0.2742,"s":0.5},{"x":0.2346,"y":0.3254,"s":0.5},{"x":0.3312,"y":0.2548,"s":0.5},{"x":0.2201,"y":0.34,"s":0.8},{"x":0.1606,"y":0.4168,"s":0.8},{"x":0.1945,"y":0.3774,"s":0.5},{"x":0.3793,"y":0.2344,"s":0.5},{"x":0.4321,"y":0.2142,"s":0.5},{"x":0.2387,"y":0.3437,"s":0.5},{"x":0.1191,"y":0.5458,"s":0.8},{"x":0.2835,"y":0.307,"s":0.5},{"x":0.3273,"y":0.273,"s":0.5},{"x":0.2834,"y":0.3075,"s":0.8},{"x":0.1662,"y":0.4523,"s":0.5},{"x":0.2429,"y":0.3479,"s":0.5},{"x":0.2017,"y":0.3995,"s":0.5},{"x":0.2888,"y":0.3052,"s":0.8},{"x":0.2101,"y":0.3892,"s":0.5},{"x":0.1096,"y":0.6284,"s":0.5},{"x":0.2505,"y":0.3453,"s":0.5},{"x":0.1102,"y":0.6287,"s":0.8},{"x":0.1145,"y":0.6311,"s":0.5},{"x":0.113,"y":0.6456,"s":0.8},{"x":0.2628,"y":0.3394,"s":1.2},{"x":0.2339,"y":0.3754,"s":0.5},{"x":0.124,"y":0.6691,"s":0.5},{"x":0.2329,"y":0.3878,"s":0.5},{"x":0.3635,"y":0.2618,"s":0.5},{"x":0.1443,"y":0.5682,"s":0.5},{"x":0.303,"y":0.3108,"s":0.5},{"x":0.1805,"y":0.4864,"s":0.5},{"x":0.254,"y":0.3692,"s":0.5},{"x":0.192,"y":0.4696,"s":0.5},{"x":0.156,"y":0.5692,"s":0.5},{"x":0.1947,"y":0.4714,"s":0.8},{"x":0.161,"y":0.5611,"s":0.5},{"x":0.214,"y":0.4381,"s":0.5},{"x":0.2008,"y":0.4658,"s":0.8},{"x":0.2962,"y":0.3326,"s":1.8},{"x":0.2034,"y":0.4725,"s":0.5},{"x":0.2328,"y":0.4225,"s":0.5},{"x":0.3643,"y":0.2736,"s":0.8},{"x":0.3466,"y":0.2885,"s":0.5},{"x":0.2501,"y":0.3976,"s":0.5},{"x":0.1509,"y":0.7247,"s":0.5},{"x":0.2609,"y":0.3834,"s":1.2},{"x":0.21,"y":0.4691,"s":0.5},{"x":0.2631,"y":0.3822,"s":0.5},{"x":0.2701,"y":0.3731,"s":0.5},{"x":0.163,"y":0.6169,"s":0.8},{"x":0.169,"y":0.5889,"s":0.5},{"x":0.3045,"y":0.3341,"s":0.5},{"x":0.1612,"y":0.7884,"s":0.5},{"x":0.1605,"y":0.7367,"s":0.5},{"x":0.2458,"y":0.4186,"s":0.5},{"x":0.1714,"y":0.6151,"s":0.5},{"x":0.3015,"y":0.3437,"s":0.5},{"x":0.2936,"y":0.3594,"s":0.8},{"x":0.317,"y":0.335,"s":0.5},{"x":0.1779,"y":0.7751,"s":0.5},{"x":0.1814,"y":0.6877,"s":0.5},{"x":0.3085,"y":0.3526,"s":0.8},{"x":0.185,"y":0.6706,"s":0.5},{"x":0.322,"y":0.3383,"s":0.5},{"x":0.1847,"y":0.7228,"s":0.5},{"x":0.1948,"y":0.6342,"s":0.5},{"x":0.2267,"y":0.5128,"s":0.5},{"x":0.2754,"y":0.4166,"s":0.8},{"x":0.2318,"y":0.5154,"s":0.5},{"x":0.2985,"y":0.3831,"s":0.8},{"x":0.2252,"y":0.541,"s":0.8},{"x":0.3045,"y":0.3788,"s":0.5},{"x":0.2924,"y":0.3986,"s":0.5},{"x":0.2034,"y":0.7722,"s":0.5},{"x":0.3812,"y":0.2864,"s":1.2},{"x":0.2161,"y":0.835,"s":0.5},{"x":0.2604,"y":0.4702,"s":0.5},{"x":0.21,"y":0.6701,"s":0.5},{"x":0.2147,"y":0.7058,"s":0.8},{"x":0.4152,"y":0.2605,"s":0.8},{"x":0.2178,"y":0.702,"s":0.5},{"x":0.2772,"y":0.4559,"s":0.5},{"x":0.2323,"y":0.6055,"s":1.2},{"x":0.335,"y":0.3613,"s":0.8},{"x":0.3167,"y":0.3916,"s":0.5},{"x":0.2307,"y":0.6879,"s":0.5},{"x":0.2388,"y":0.6198,"s":0.5},{"x":0.388,"y":0.2963,"s":0.5},{"x":0.2361,"y":0.6712,"s":0.8},{"x":0.4222,"y":0.2618,"s":0.5},{"x":0.3565,"y":0.3419,"s":0.5},{"x":0.2389,"y":0.6846,"s":0.5},{"x":0.3801,"y":0.3116,"s":0.5},{"x":0.3025,"y":0.4393,"s":0.5},{"x":0.2686,"y":0.5283,"s":1.2},{"x":0.2811,"y":0.4921,"s":0.5},{"x":0.2967,"y":0.4536,"s":0.5},{"x":0.2433,"y":0.7749,"s":0.5},{"x":0.3885,"y":0.303,"s":0.5},{"x":0.3543,"y":0.3517,"s":0.5},{"x":0.2462,"y":0.6688,"s":1.2},{"x":0.2588,"y":0.8032,"s":0.8},{"x":0.2782,"y":0.5949,"s":0.5},{"x":0.4079,"y":0.2953,"s":0.5},{"x":0.2886,"y":0.5591,"s":0.5},{"x":0.2831,"y":0.586,"s":1.2},{"x":0.277,"y":0.8161,"s":0.5},{"x":0.274,"y":0.6581,"s":0.5},{"x":0.3191,"y":0.4642,"s":0.8},{"x":0.2886,"y":0.8681,"s":1.8},{"x":0.2756,"y":0.7723,"s":0.5},{"x":0.2762,"y":0.7791,"s":0.5},{"x":0.4344,"y":0.2653,"s":0.5},{"x":0.336,"y":0.4307,"s":0.5},{"x":0.2778,"y":0.7692,"s":0.5},{"x":0.2955,"y":0.5548,"s":0.8},{"x":0.3931,"y":0.3244,"s":0.8},{"x":0.3521,"y":0.4038,"s":0.5},{"x":0.3924,"y":0.3307,"s":0.5},{"x":0.291,"y":0.8268,"s":0.5},{"x":0.35,"y":0.4131,"s":0.5},{"x":0.2912,"y":0.6268,"s":0.5},{"x":0.3718,"y":0.3773,"s":0.5},{"x":0.3382,"y":0.4562,"s":0.5},{"x":0.3158,"y":0.5294,"s":0.5},{"x":0.3022,"y":0.595,"s":0.8},{"x":0.386,"y":0.354,"s":0.5},{"x":0.3806,"y":0.366,"s":0.5},{"x":0.309,"y":0.5821,"s":0.5},{"x":0.3152,"y":0.5666,"s":0.5},{"x":0.3122,"y":0.5897,"s":0.8},{"x":0.4038,"y":0.3296,"s":0.5},{"x":0.3105,"y":0.839,"s":0.8},{"x":0.3804,"y":0.3753,"s":0.5},{"x":0.3113,"y":0.8406,"s":0.5},{"x":0.3721,"y":0.3953,"s":0.5},{"x":0.3074,"y":0.6439,"s":0.5},{"x":0.387,"y":0.3649,"s":0.8},{"x":0.306,"y":0.7663,"s":0.5},{"x":0.3201,"y":0.5915,"s":0.5},{"x":0.3937,"y":0.3615,"s":0.5},{"x":0.372,"y":0.4157,"s":0.5},{"x":0.382,"y":0.3937,"s":0.5},{"x":0.3168,"y":0.7342,"s":0.5},{"x":0.3369,"y":0.5411,"s":0.8},{"x":0.3593,"y":0.4587,"s":0.5},{"x":0.3304,"y":0.8598,"s":1.2},{"x":0.3618,"y":0.4551,"s":1.2},{"x":0.3263,"y":0.8227,"s":0.5},{"x":0.3211,"y":0.6883,"s":0.5},{"x":0.3429,"y":0.907,"s":0.5},{"x":0.3565,"y":0.4852,"s":0.8},{"x":0.3441,"y":0.5362,"s":0.5},{"x":0.4776,"y":0.2246,"s":0.5},{"x":0.3429,"y":0.8902,"s":0.8},{"x":0.3302,"y":0.661,"s":0.5},{"x":0.4324,"y":0.3014,"s":0.8},{"x":0.3612,"y":0.4817,"s":0.8},{"x":0.3893,"y":0.4013,"s":0.5},{"x":0.3331,"y":0.7681,"s":0.5},{"x":0.3365,"y":0.6308,"s":0.8},{"x":0.4821,"y":0.2196,"s":0.5},{"x":0.3358,"y":0.6729,"s":0.8},{"x":0.3506,"y":0.5534,"s":0.5},{"x":0.3373,"y":0.7659,"s":0.5},{"x":0.4033,"y":0.375,"s":0.5},{"x":0.3387,"y":0.7487,"s":1.8},{"x":0.3586,"y":0.8981,"s":0.5},{"x":0.3956,"y":0.4083,"s":0.8},{"x":0.3787,"y":0.4701,"s":1.2},{"x":0.3567,"y":0.578,"s":0.5},{"x":0.4092,"y":0.3757,"s":0.5},{"x":0.3666,"y":0.5267,"s":1.2},{"x":0.4269,"y":0.3354,"s":0.5},{"x":0.3497,"y":0.7156,"s":0.5},{"x":0.3561,"y":0.8332,"s":0.5},{"x":0.3643,"y":0.553,"s":0.5},{"x":0.3791,"y":0.4823,"s":0.5},{"x":0.4607,"y":0.2633,"s":0.5},{"x":0.3533,"y":0.7018,"s":0.8},{"x":0.3538,"y":0.7087,"s":0.5},{"x":0.3615,"y":0.8441,"s":0.8},{"x":0.414,"y":0.3806,"s":0.5},{"x":0.3635,"y":0.6259,"s":0.5},{"x":0.3642,"y":0.6407,"s":0.5},{"x":0.3658,"y":0.6342,"s":0.5},{"x":0.3716,"y":0.5826,"s":0.8},{"x":0.3842,"y":0.9359,"s":0.8},{"x":0.4171,"y":0.3835,"s":0.5},{"x":0.3665,"y":0.6414,"s":0.5},{"x":0.4491,"y":0.2988,"s":0.5},{"x":0.3655,"y":0.7646,"s":0.5},{"x":0.3676,"y":0.6435,"s":0.5},{"x":0.3907,"y":0.4928,"s":0.5},{"x":0.3701,"y":0.6965,"s":0.8},{"x":0.4417,"y":0.3265,"s":0.5},{"x":0.3951,"y":0.4952,"s":0.5},{"x":0.3738,"y":0.6994,"s":0.5},{"x":0.3817,"y":0.5932,"s":0.5},{"x":0.3856,"y":0.5701,"s":0.5},{"x":0.3909,"y":0.5421,"s":0.5},{"x":0.4388,"y":0.3442,"s":0.5},{"x":0.3841,"y":0.7949,"s":0.5},{"x":0.3825,"y":0.701,"s":0.5},{"x":0.4102,"y":0.4629,"s":0.5},{"x":0.3886,"y":0.8242,"s":0.5},{"x":0.4284,"y":0.3988,"s":0.8},{"x":0.3934,"y":0.8424,"s":0.5},{"x":0.4253,"y":0.4126,"s":0.5},{"x":0.4743,"y":0.2564,"s":0.8},{"x":0.3913,"y":0.6675,"s":0.5},{"x":0.3985,"y":0.5751,"s":0.5},{"x":0.4282,"y":0.4085,"s":0.5},{"x":0.393,"y":0.6854,"s":0.5},{"x":0.3991,"y":0.5926,"s":0.5},{"x":0.3947,"y":0.6692,"s":0.5},{"x":0.4177,"y":0.4731,"s":0.5},{"x":0.4346,"y":0.4005,"s":0.5},{"x":0.4047,"y":0.5854,"s":0.5},{"x":0.4489,"y":0.3467,"s":0.5},{"x":0.4012,"y":0.7391,"s":0.5},{"x":0.4519,"y":0.353,"s":0.5},{"x":0.4278,"y":0.4931,"s":0.5},{"x":0.416,"y":0.6183,"s":0.5},{"x":0.4529,"y":0.3615,"s":0.5},{"x":0.4203,"y":0.5718,"s":0.5},{"x":0.7224,"y":0.4662,"s":4,"n":"Jupiter","p":true},{"x":0.172,"y":0.6841,"s":4,"n":"Venus","p":true},{"x":0.3468,"y":0.6361,"s":4,"n":"Saturn","p":true},{"x":0.9137,"y":0.2888,"s":8,"n":"Moon","p":true}];
+
+  const c = document.getElementById('star-canvas');
+  const ctx = c.getContext('2d');
+  let shootingStars = [];
+  let time = 0;
+
+  function resize() { c.width = c.offsetWidth; c.height = c.offsetHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Give each star a random phase for twinkling
+  stars.forEach(s => { s.phase = Math.random() * Math.PI * 2; s.speed = 0.5 + Math.random() * 2; });
+
+  function drawStar(s, t) {
+    const cx = c.width / 2, cy = c.height / 2;
+    const angle = t * 0.00005;
+    const dx = s.x - 0.5, dy = s.y - 0.5;
+    const rx = dx * Math.cos(angle) - dy * Math.sin(angle) + 0.5;
+    const ry = dx * Math.sin(angle) + dy * Math.cos(angle) + 0.5;
+    const px = rx * c.width, py = ry * c.height;
+
+    if (s.p) {
+      // Planet or Moon
+      if (s.n === 'Moon') {
+        const glow = ctx.createRadialGradient(px, py, 0, px, py, 30);
+        glow.addColorStop(0, 'rgba(255,235,180,0.6)');
+        glow.addColorStop(0.5, 'rgba(255,220,150,0.15)');
+        glow.addColorStop(1, 'transparent');
+        ctx.fillStyle = glow;
+        ctx.beginPath();
+        ctx.arc(px, py, 30, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#fff8e1';
+        ctx.beginPath();
+        ctx.arc(px, py, s.s, 0, Math.PI * 2);
+        ctx.fill();
+      } else {
+        const brightness = 0.85 + 0.15 * Math.sin(t * 0.001 * s.speed + s.phase);
+        const glow = ctx.createRadialGradient(px, py, 0, px, py, 16);
+        glow.addColorStop(0, `rgba(212,175,55,${brightness})`);
+        glow.addColorStop(0.5, `rgba(212,175,55,${brightness * 0.3})`);
+        glow.addColorStop(1, 'transparent');
+        ctx.fillStyle = glow;
+        ctx.beginPath();
+        ctx.arc(px, py, 16, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = `rgba(255,223,100,${brightness})`;
+        ctx.beginPath();
+        ctx.arc(px, py, s.s, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      // Label
+      if (s.n) {
+        ctx.fillStyle = 'rgba(212,175,55,0.8)';
+        ctx.font = '11px "Cormorant Garamond", serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(s.n, px, py - s.s - 8);
+      }
+    } else {
+      const brightness = 0.3 + 0.7 * Math.abs(Math.sin(t * 0.001 * s.speed + s.phase));
+      ctx.fillStyle = `rgba(255,255,255,${brightness})`;
+      ctx.beginPath();
+      ctx.arc(px, py, s.s * 0.8, 0, Math.PI * 2);
+      ctx.fill();
+      if (s.s >= 1.5) {
+        const glow = ctx.createRadialGradient(px, py, 0, px, py, s.s * 3);
+        glow.addColorStop(0, `rgba(200,220,255,${brightness * 0.3})`);
+        glow.addColorStop(1, 'transparent');
+        ctx.fillStyle = glow;
+        ctx.beginPath();
+        ctx.arc(px, py, s.s * 3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }
+
+  function spawnShootingStar() {
+    shootingStars.push({
+      x: Math.random() * c.width, y: Math.random() * c.height * 0.5,
+      vx: 4 + Math.random() * 4, vy: 2 + Math.random() * 3,
+      life: 1, decay: 0.015 + Math.random() * 0.01
+    });
+  }
+
+  function animate(t) {
+    time = t;
+    ctx.fillStyle = '#0a0e27';
+    ctx.fillRect(0, 0, c.width, c.height);
+
+    stars.forEach(s => drawStar(s, t));
+
+    // Shooting stars
+    if (Math.random() < 0.005) spawnShootingStar();
+    shootingStars = shootingStars.filter(ss => {
+      ss.x += ss.vx;
+      ss.y += ss.vy;
+      ss.life -= ss.decay;
+      if (ss.life <= 0) return false;
+      ctx.strokeStyle = `rgba(255,255,255,${ss.life})`;
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(ss.x, ss.y);
+      ctx.lineTo(ss.x - ss.vx * 8, ss.y - ss.vy * 8);
+      ctx.stroke();
+      return true;
+    });
+
+    requestAnimationFrame(animate);
+  }
+  requestAnimationFrame(animate);
+})();
+
+// === PANEL 5: ROUTE SVG ===
+(function() {
+  const svg = document.getElementById('route-svg');
+  const cities = [
+    { x: '10%', y: '25%' },
+    { x: '30%', y: '15%' },
+    { x: '20%', y: '55%' },
+    { x: '45%', y: '70%' },
+    { x: '75%', y: '20%' }
+  ];
+
+  function pct(v, dim) {
+    return parseFloat(v) / 100 * (dim === 'x' ? 500 : 400);
+  }
+
+  let d = '';
+  cities.forEach((c, i) => {
+    const x = pct(c.x, 'x') + 7;
+    const y = pct(c.y, 'y') + 7;
+    d += (i === 0 ? `M${x},${y}` : ` L${x},${y}`);
+  });
+
+  svg.setAttribute('viewBox', '0 0 500 400');
+  svg.innerHTML = `<path d="${d}" fill="none" stroke="#8b3a2a" stroke-width="2" stroke-dasharray="8 6" opacity="0.5"/>`;
+})();
+
+// === PANEL 6: BUBBLES ===
+(function() {
+  const c = document.getElementById('bubbles-canvas');
+  const ctx = c.getContext('2d');
+  let bubbles = [];
+  function resize() { c.width = c.offsetWidth; c.height = c.offsetHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  for (let i = 0; i < 25; i++) {
+    bubbles.push({
+      x: Math.random() * c.width,
+      y: Math.random() * c.height,
+      r: Math.random() * 20 + 8,
+      dy: -(Math.random() * 0.4 + 0.1),
+      dx: Math.random() * 0.3 - 0.15,
+      opacity: Math.random() * 0.15 + 0.05,
+      color: ['#b39ddb','#81d4fa','#a5d6a7','#fff59d','#f8bbd0'][Math.floor(Math.random()*5)]
+    });
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, c.width, c.height);
+    bubbles.forEach(b => {
+      b.y += b.dy;
+      b.x += b.dx;
+      if (b.y < -30) { b.y = c.height + 30; b.x = Math.random() * c.width; }
+      ctx.beginPath();
+      ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+      ctx.fillStyle = b.color;
+      ctx.globalAlpha = b.opacity;
+      ctx.fill();
+      ctx.globalAlpha = b.opacity * 0.5;
+      ctx.strokeStyle = '#fff';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      ctx.globalAlpha = 1;
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+// === PANEL 7: FALLING HEARTS ===
+(function() {
+  const c = document.getElementById('hearts-canvas');
+  const ctx = c.getContext('2d');
+  let hearts = [];
+  function resize() { c.width = c.offsetWidth; c.height = c.offsetHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  for (let i = 0; i < 30; i++) {
+    hearts.push({
+      x: Math.random() * c.width,
+      y: Math.random() * c.height,
+      s: Math.random() * 12 + 6,
+      dy: Math.random() * 0.8 + 0.2,
+      dx: Math.random() * 0.4 - 0.2,
+      rot: Math.random() * Math.PI * 2,
+      dr: Math.random() * 0.02 - 0.01,
+      opacity: Math.random() * 0.3 + 0.1
+    });
+  }
+
+  function drawHeart(x, y, s, rot, opacity) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(rot);
+    ctx.globalAlpha = opacity;
+    ctx.fillStyle = '#d4af37';
+    ctx.beginPath();
+    ctx.moveTo(0, -s * 0.4);
+    ctx.bezierCurveTo(-s * 0.5, -s, -s, -s * 0.4, 0, s * 0.6);
+    ctx.bezierCurveTo(s, -s * 0.4, s * 0.5, -s, 0, -s * 0.4);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, c.width, c.height);
+    hearts.forEach(h => {
+      h.y += h.dy;
+      h.x += h.dx;
+      h.rot += h.dr;
+      if (h.y > c.height + 20) { h.y = -20; h.x = Math.random() * c.width; }
+      drawHeart(h.x, h.y, h.s, h.rot, h.opacity);
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+// Init
+goTo(0);
+visited.add(0);
+</script>
+</body>
+</html>
