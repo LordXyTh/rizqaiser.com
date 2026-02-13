@@ -1596,6 +1596,10 @@ function closeGallery() {
   document.body.style.overflow = '';
 }
 
+// Move modals to body (fixes fixed positioning inside transformed slider)
+document.body.appendChild(document.getElementById('galleryModal'));
+document.body.appendChild(document.getElementById('lightbox'));
+
 // Init
 goTo(0);
 visited.add(0);
