@@ -1088,7 +1088,7 @@ html, body {
         <div class="city-dot" style="left:72%;top:18%" onclick="openGallery('london')">
           <div class="city-marker"></div>
           <span class="city-name">London</span>
-          <div class="city-photo" style="background:#e8d8c8;display:flex;align-items:center;justify-content:center;font-size:10px;color:#8b6914;">Soon</div>
+          <div class="city-photo"><img src="photos/honeymoon/london/1.jpg" alt="London"></div>
         </div>
         <span class="travel-emoji" style="left:5%;top:85%">🍊</span>
         <span class="travel-emoji" style="left:55%;top:45%;animation-delay:1s">🥂</span>
@@ -1557,7 +1557,7 @@ const galleryData = {
   },
   london: {
     title: 'London',
-    photos: []
+    photos: Array.from({length: 4}, (_, i) => `photos/honeymoon/london/${i+1}.jpg`)
   }
 };
 
