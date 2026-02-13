@@ -1083,7 +1083,7 @@ html, body {
         <div class="city-dot" style="left:40%;top:72%" onclick="openGallery('marbella')">
           <div class="city-marker"></div>
           <span class="city-name">Marbella</span>
-          <div class="city-photo" style="background:#e8d8c8;display:flex;align-items:center;justify-content:center;font-size:10px;color:#8b6914;">Soon</div>
+          <div class="city-photo"><img src="photos/honeymoon/marbella/1.jpg" alt="Marbella"></div>
         </div>
         <div class="city-dot" style="left:72%;top:18%" onclick="openGallery('london')">
           <div class="city-marker"></div>
@@ -1100,12 +1100,12 @@ html, body {
   </div>
 
   <!-- Gallery Modal for Honeymoon -->
-  <div class="gallery-modal" id="galleryModal">
+  <div class="gallery-modal" id="galleryModal" onclick="closeGallery()">
     <div class="gallery-header">
       <span class="gallery-title" id="galleryTitle">Barcelona</span>
     </div>
     <span class="gallery-close" onclick="closeGallery()">&times;</span>
-    <div class="gallery-grid" id="galleryGrid"></div>
+    <div class="gallery-grid" id="galleryGrid" onclick="event.stopPropagation()"></div>
   </div>
 
   <!-- PANEL 7: JUNE -->
@@ -1553,7 +1553,7 @@ const galleryData = {
   },
   marbella: {
     title: 'Marbella',
-    photos: []
+    photos: Array.from({length: 6}, (_, i) => `photos/honeymoon/marbella/${i+1}.jpg`)
   },
   london: {
     title: 'London',
@@ -1564,11 +1564,15 @@ const galleryData = {
 function openGallery(city) {
   const data = galleryData[city];
   if (!data) return;
+  if (data.photos.length === 0) {
+    alert('Photos coming soon! 📸');
+    return;
+  }
   
   document.getElementById('galleryTitle').textContent = data.title;
   const grid = document.getElementById('galleryGrid');
   grid.innerHTML = data.photos.map(src => 
-    `<div class="gallery-thumb" onclick="openLightbox('${src}', '${data.title}')">
+    `<div class="gallery-thumb" onclick="openLightbox('${src}', '${data.title}'); event.stopPropagation();">
       <img src="${src}" alt="${data.title}">
     </div>`
   ).join('');
