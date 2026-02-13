@@ -810,11 +810,11 @@ html, body {
         <div class="polaroid" data-caption="Date nights" onclick="openLightbox('photos/photo10.jpg', 'Date nights')">
           <img src="photos/photo10.jpg" alt="Anniversary dinner">
         </div>
-        <div class="polaroid" data-caption="Dressed up" onclick="openLightbox('photos/photo7.jpg', 'Dressed up')">
-          <img src="photos/photo7.jpg" alt="Together">
+        <div class="polaroid" data-caption="Eid" onclick="openLightbox('photos/photo7.jpg', 'Eid')">
+          <img src="photos/photo7.jpg" alt="Eid">
         </div>
-        <div class="polaroid" data-caption="Dancing" onclick="openLightbox('photos/photo11.jpg', 'Dancing')">
-          <img src="photos/photo11.jpg" alt="Dancing">
+        <div class="polaroid" data-caption="Annoying you" onclick="openLightbox('photos/photo11.jpg', 'Annoying you')">
+          <img src="photos/photo11.jpg" alt="Annoying you">
         </div>
         <div class="polaroid" data-caption="Lazy days" onclick="openLightbox('photos/photo12.jpg', 'Lazy days')">
           <img src="photos/photo12.jpg" alt="Cozy">
@@ -832,13 +832,6 @@ html, body {
     <div class="dating-sparkle" style="top: 18%; right: 8%; animation-delay: 1.2s;"></div>
     <div class="dating-sparkle" style="bottom: 20%; left: 6%; animation-delay: 2.4s;"></div>
     <div class="dating-sparkle" style="bottom: 12%; right: 15%; animation-delay: 3.6s;"></div>
-  </div>
-
-  <!-- Lightbox (shared) -->
-  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-    <span class="lightbox-close">&times;</span>
-    <img id="lightbox-img" src="" alt="">
-    <div class="lightbox-caption" id="lightbox-caption"></div>
   </div>
 
   <!-- PANEL 4: ENGAGEMENT -->
@@ -942,6 +935,13 @@ html, body {
     </div>
   </div>
 
+</div>
+
+<!-- Lightbox (shared across all panels) -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">&times;</span>
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-caption" id="lightbox-caption"></div>
 </div>
 
 <script>
