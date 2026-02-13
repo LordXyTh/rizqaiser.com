@@ -876,19 +876,127 @@ html, body {
   text-align: center;
 }
 .baby-photo-frame {
-  width: min(200px, 50vw);
-  height: min(200px, 50vw);
+  width: min(220px, 55vw);
+  height: min(220px, 55vw);
   border-radius: 50%;
-  border: 4px dashed #b39ddb;
+  border: 4px solid #b39ddb;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 24px;
   background: rgba(255,255,255,0.5);
-  box-shadow: 0 0 60px rgba(179,157,219,0.3);
+  box-shadow: 0 0 60px rgba(179,157,219,0.3), 0 8px 32px rgba(0,0,0,0.1);
   color: #b39ddb;
   font-family: var(--handwritten);
   font-size: 1.2rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+.baby-photo-frame:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 80px rgba(179,157,219,0.5), 0 12px 40px rgba(0,0,0,0.15);
+}
+.baby-photo-frame img, .baby-photo-frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.nuri-tap-hint {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.9);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: #7e57c2;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.8; transform: translateX(-50%) scale(1); }
+  50% { opacity: 1; transform: translateX(-50%) scale(1.05); }
+}
+
+/* Nuri Gallery Lightbox */
+.nuri-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.97);
+  z-index: 99999;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.nuri-lightbox.active { display: flex; }
+.nuri-lightbox-content {
+  max-width: 90vw;
+  max-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nuri-lightbox img, .nuri-lightbox video {
+  max-width: 90vw;
+  max-height: 80vh;
+  border-radius: 12px;
+  box-shadow: 0 10px 60px rgba(0,0,0,0.5);
+}
+.nuri-lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.15);
+  color: white;
+  border: none;
+  font-size: 3rem;
+  padding: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+  border-radius: 8px;
+}
+.nuri-lightbox-nav:hover { background: rgba(255,255,255,0.25); }
+.nuri-lightbox-nav.prev { left: 20px; }
+.nuri-lightbox-nav.next { right: 20px; }
+.nuri-lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  color: white;
+  font-size: 3rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+.nuri-lightbox-close:hover { opacity: 1; }
+.nuri-lightbox-shuffle {
+  position: absolute;
+  top: 20px;
+  left: 25px;
+  background: rgba(179,157,219,0.3);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+.nuri-lightbox-shuffle:hover { background: rgba(179,157,219,0.5); }
+.nuri-lightbox-counter {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.8);
+  font-size: 1.1rem;
+  font-family: var(--handwritten);
 }
 .baby-content h2 {
   font-family: var(--heading);
@@ -1146,7 +1254,11 @@ html, body {
   <div class="panel panel-baby" data-panel="7">
     <canvas id="bubbles-canvas"></canvas>
     <div class="baby-content">
-      <div class="baby-photo-frame">Photo</div>
+      <div class="baby-photo-frame" id="nuriPreview" onclick="openNuriGallery()">
+        <img id="nuriPreviewImg" src="" alt="Baby Nuri" style="display:none;">
+        <video id="nuriPreviewVid" src="" muted loop playsinline style="display:none;"></video>
+        <span class="nuri-tap-hint">Tap to explore 💛</span>
+      </div>
       <h2>Our Greatest Adventure</h2>
       <div class="baby-name">Baby Nuri 💛</div>
     </div>
@@ -1178,6 +1290,16 @@ html, body {
   <span class="lightbox-close">&times;</span>
   <img id="lightbox-img" src="" alt="">
   <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+
+<!-- Nuri Gallery Lightbox -->
+<div class="nuri-lightbox" id="nuriLightbox">
+  <button class="nuri-lightbox-close" onclick="closeNuriGallery()">&times;</button>
+  <button class="nuri-lightbox-shuffle" onclick="shuffleNuriGallery()">🔀 Shuffle</button>
+  <button class="nuri-lightbox-nav prev" onclick="navigateNuri(-1)">‹</button>
+  <div class="nuri-lightbox-content" id="nuriLightboxContent"></div>
+  <button class="nuri-lightbox-nav next" onclick="navigateNuri(1)">›</button>
+  <div class="nuri-lightbox-counter" id="nuriCounter"></div>
 </div>
 
 <script>
@@ -1544,6 +1666,12 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     closeLightbox();
     closeGallery();
+    closeNuriGallery();
+  }
+  // Nuri gallery navigation
+  if (document.getElementById('nuriLightbox').classList.contains('active')) {
+    if (e.key === 'ArrowLeft') navigateNuri(-1);
+    if (e.key === 'ArrowRight') navigateNuri(1);
   }
 });
 
@@ -1599,6 +1727,140 @@ function closeGallery() {
 // Move modals to body (fixes fixed positioning inside transformed slider)
 document.body.appendChild(document.getElementById('galleryModal'));
 document.body.appendChild(document.getElementById('lightbox'));
+document.body.appendChild(document.getElementById('nuriLightbox'));
+
+// === BABY NURI GALLERY ===
+const nuriMedia = [
+  { type: 'image', src: 'photos/nuri/89d63bf4-26f2-4069-bb89-4e4a6dc05b19.jpg' },
+  { type: 'image', src: 'photos/nuri/d2ebdbb7-2fd5-4fed-aea2-2f132b8dd33f.jpg' },
+  { type: 'image', src: 'photos/nuri/deb2d704-6614-4dba-b9f7-5a1219f7fbc9.jpg' },
+  { type: 'image', src: 'photos/nuri/c700b82e-f899-495f-90d9-854364d82250.jpg' },
+  { type: 'image', src: 'photos/nuri/66d41dc7-b9ad-4601-81d7-8bef9a882563.jpg' },
+  { type: 'image', src: 'photos/nuri/ba3cfec6-72b1-4709-a552-6c46a96e3408.jpg' },
+  { type: 'image', src: 'photos/nuri/26456569-0cad-4400-8932-f102c7002356.jpg' },
+  { type: 'image', src: 'photos/nuri/0b098625-738e-43fa-a90a-9944f6a5ac5e.jpg' },
+  { type: 'image', src: 'photos/nuri/bc5e5879-5cc6-4da2-9ee9-6e01250562ef.jpg' },
+  { type: 'image', src: 'photos/nuri/77dedf96-c6d0-4a2a-8250-bfffbfc6c22d.jpg' },
+  { type: 'image', src: 'photos/nuri/909325dd-bb25-4703-a0a6-5f615d47aa5d.jpg' },
+  { type: 'image', src: 'photos/nuri/e53e9ba6-ec0a-42a4-9f74-948826a89be6.jpg' },
+  { type: 'image', src: 'photos/nuri/f728c232-429d-41c7-bf4c-1d855499a7b2.jpg' },
+  { type: 'image', src: 'photos/nuri/76faf8a3-a14a-4d27-8d10-4488f8c85ec8.jpg' },
+  { type: 'image', src: 'photos/nuri/0d1b426b-4a67-494e-b9ae-5e1cebc33daa.jpg' },
+  { type: 'image', src: 'photos/nuri/99d1fb1f-81a8-4dab-a77c-b44c232e6ef6.jpg' },
+  { type: 'image', src: 'photos/nuri/57aa3448-35a9-4db7-abb6-e150c11c059c.jpg' },
+  { type: 'image', src: 'photos/nuri/b89b98b3-8427-40c5-bf98-9df69782f28d.jpg' },
+  { type: 'image', src: 'photos/nuri/dcdfc0e1-97cb-4e6b-a38f-3a57fae04086.jpg' },
+  { type: 'image', src: 'photos/nuri/e2fc9e7e-a90f-4a5b-971f-74d45592f59a.jpg' },
+  { type: 'image', src: 'photos/nuri/5aaec744-bd69-400e-8eb2-7204aea505d7.jpg' },
+  { type: 'image', src: 'photos/nuri/a71626b6-6d16-4b32-aab4-2614901876b5.jpg' },
+  { type: 'image', src: 'photos/nuri/723eb3d2-93f9-49c5-bf46-c75b9d6aefd7.jpg' },
+  { type: 'image', src: 'photos/nuri/939c415f-4040-43e4-bd42-d436a7ac53d2.jpg' },
+  { type: 'image', src: 'photos/nuri/acc033d4-7571-475d-8567-5a3c96065301.jpg' },
+  { type: 'image', src: 'photos/nuri/be6fe76b-97ca-442d-a2c5-e6194b81b461.jpg' },
+  { type: 'image', src: 'photos/nuri/98eab949-9e03-4acc-a7e0-1b023e561118.jpg' },
+  { type: 'image', src: 'photos/nuri/56bfcb8b-f579-46c3-bd25-efa568b6729c.jpg' },
+  { type: 'image', src: 'photos/nuri/3a0a1889-ad00-4206-a82f-c41fc45181eb.jpg' },
+  { type: 'image', src: 'photos/nuri/8efcdb68-3b81-4605-baf3-32e256698d87.jpg' },
+  { type: 'image', src: 'photos/nuri/fa5bf01f-cfb0-4eb8-998c-d3ddebac7d78.jpg' },
+  { type: 'image', src: 'photos/nuri/d6f41944-122f-4639-aa8e-ce370bc268e0.jpg' },
+  { type: 'image', src: 'photos/nuri/f5679a74-39b7-43e6-b181-595078ee0798.jpg' },
+  { type: 'image', src: 'photos/nuri/70e14bff-8031-4632-a4ac-4997f38f5b08.jpg' },
+  { type: 'image', src: 'photos/nuri/23d7bf0d-0954-4e9e-8c63-906c18e78632.jpg' },
+  { type: 'image', src: 'photos/nuri/35506d41-6e72-4b4f-90d2-a589907e4975.jpg' },
+  { type: 'image', src: 'photos/nuri/2e8c409a-17ad-4349-8b04-802023f449a6.jpg' },
+  { type: 'image', src: 'photos/nuri/4754c461-247b-47dc-8036-f0a346a779ea.jpg' },
+  { type: 'image', src: 'photos/nuri/61651969-d6ea-4b90-9db9-13709ce98af9.jpg' },
+  { type: 'image', src: 'photos/nuri/63598ce2-d29f-4ccc-b9e4-5bca0938ce45.jpg' },
+  { type: 'image', src: 'photos/nuri/a59913d3-c011-44ab-97e3-df0fd07fc7a1.jpg' },
+  { type: 'image', src: 'photos/nuri/abdd6a2e-8ab6-44fe-a54d-b533cd533dcc.jpg' },
+  { type: 'image', src: 'photos/nuri/b79eee49-f47a-4de4-99f1-db44a713c2e7.jpg' },
+  { type: 'image', src: 'photos/nuri/c2b5d3cf-dd5c-4fb9-b2eb-efcd1b28cfd8.jpg' },
+  { type: 'image', src: 'photos/nuri/ef52a926-c241-4bc9-aba3-c41acf2e7bc7.jpg' },
+  { type: 'image', src: 'photos/nuri/f7384f11-218d-4a5b-8371-d95dc8a86c7e.jpg' },
+  { type: 'image', src: 'photos/nuri/1808796e-2b0c-4e1b-ad4b-6da3d431271d.jpg' },
+  // Videos
+  { type: 'video', src: 'photos/nuri/16102a86-1037-486f-afa3-39cea3dfeb18.mp4' },
+  { type: 'video', src: 'photos/nuri/32745e37-eb0e-4b42-87c2-73de893e38ce.mov' },
+  { type: 'video', src: 'photos/nuri/3accc928-c4b2-484c-a895-d41dadaf6fa0.mov' },
+  { type: 'video', src: 'photos/nuri/648eaee5-b21d-446f-812b-589e949d95f2.mov' },
+  { type: 'video', src: 'photos/nuri/65f1a616-5a91-4ef7-8779-10b3d85ef65e.mov' },
+  // GIF
+  { type: 'image', src: 'photos/nuri/6c1133c9-5b12-4b1c-abc7-78bef6665f85.gif' },
+];
+
+let nuriShuffled = [];
+let nuriIndex = 0;
+
+function shuffleArray(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+// Show random preview on panel
+function initNuriPreview() {
+  const preview = nuriMedia[Math.floor(Math.random() * nuriMedia.length)];
+  const img = document.getElementById('nuriPreviewImg');
+  const vid = document.getElementById('nuriPreviewVid');
+  
+  if (preview.type === 'video') {
+    vid.src = preview.src;
+    vid.style.display = 'block';
+    img.style.display = 'none';
+    vid.play().catch(() => {});
+  } else {
+    img.src = preview.src;
+    img.style.display = 'block';
+    vid.style.display = 'none';
+  }
+}
+
+function openNuriGallery() {
+  nuriShuffled = shuffleArray(nuriMedia);
+  nuriIndex = 0;
+  showNuriMedia();
+  document.getElementById('nuriLightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeNuriGallery() {
+  document.getElementById('nuriLightbox').classList.remove('active');
+  document.body.style.overflow = '';
+  const vid = document.querySelector('#nuriLightboxContent video');
+  if (vid) vid.pause();
+}
+
+function showNuriMedia() {
+  const container = document.getElementById('nuriLightboxContent');
+  const item = nuriShuffled[nuriIndex];
+  
+  if (item.type === 'video') {
+    container.innerHTML = `<video src="${item.src}" controls autoplay playsinline></video>`;
+  } else {
+    container.innerHTML = `<img src="${item.src}" alt="Baby Nuri">`;
+  }
+  
+  document.getElementById('nuriCounter').textContent = `${nuriIndex + 1} / ${nuriShuffled.length}`;
+}
+
+function navigateNuri(dir) {
+  const vid = document.querySelector('#nuriLightboxContent video');
+  if (vid) vid.pause();
+  nuriIndex = (nuriIndex + dir + nuriShuffled.length) % nuriShuffled.length;
+  showNuriMedia();
+}
+
+function shuffleNuriGallery() {
+  nuriShuffled = shuffleArray(nuriMedia);
+  nuriIndex = 0;
+  showNuriMedia();
+}
+
+// Initialize preview and also refresh when visiting the panel
+initNuriPreview();
 
 // Init
 goTo(0);
