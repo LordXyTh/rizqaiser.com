@@ -549,23 +549,35 @@ html, body {
 }
 .star-overlay .date {
   font-family: var(--heading);
-  font-size: clamp(1.4rem, 4vw, 2.5rem);
-  color: #d4af37;
-  letter-spacing: 0.1em;
+  font-size: clamp(1.5rem, 4.5vw, 2.8rem);
+  color: #f0f4ff;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 30px rgba(200, 220, 255, 0.4);
 }
 .star-overlay .tagline {
   font-family: var(--body);
   font-size: clamp(1rem, 2.5vw, 1.4rem);
-  color: rgba(212,175,55,0.8);
+  color: rgba(200, 220, 255, 0.75);
   font-style: italic;
-  margin-top: 8px;
+  margin-top: 10px;
   font-weight: 300;
+}
+.star-overlay .actual-map {
+  font-family: var(--handwritten);
+  font-size: clamp(0.85rem, 2.2vw, 1.1rem);
+  color: rgba(255, 230, 180, 0.7);
+  margin-top: 20px;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 230, 180, 0.3);
+  border-radius: 20px;
+  display: inline-block;
+  background: rgba(255, 230, 180, 0.05);
 }
 .star-overlay .constellations {
   font-family: var(--body);
-  font-size: clamp(0.8rem, 2vw, 1.1rem);
-  color: rgba(212,175,55,0.5);
-  margin-top: 16px;
+  font-size: clamp(0.75rem, 1.8vw, 1rem);
+  color: rgba(200, 220, 255, 0.4);
+  margin-top: 18px;
   letter-spacing: 0.2em;
 }
 
@@ -867,6 +879,7 @@ html, body {
     <div class="star-overlay">
       <div class="date">December 17, 2024 — Karachi</div>
       <div class="tagline">The stars that witnessed our forever</div>
+      <div class="actual-map">✨ This is the actual night sky from that evening ✨</div>
       <div class="constellations">✦ Orion · Taurus · Gemini ✦</div>
     </div>
   </div>
