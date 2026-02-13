@@ -76,6 +76,21 @@ html, body {
 .nav-arrow.right { right: 16px; }
 .nav-arrow:disabled { opacity: 0.2; pointer-events: none; }
 
+/* Mobile: smaller, more subtle arrows that don't overlap text */
+@media (max-width: 768px) {
+  .nav-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+    background: rgba(255,255,255,0.1);
+    top: auto;
+    bottom: 70px;
+    transform: none;
+  }
+  .nav-arrow.left { left: 12px; }
+  .nav-arrow.right { right: 12px; }
+}
+
 .dots {
   position: fixed;
   bottom: 24px;
