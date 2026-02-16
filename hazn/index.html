@@ -164,12 +164,58 @@
       50% { opacity: 0.5; }
     }
 
+    /* Avatar float */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* Text reveal */
+    @keyframes revealWord {
+      from { 
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(4px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+
+    /* Card stagger */
+    @keyframes cardIn {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Button press */
+    .btn {
+      transition: all 0.15s ease;
+    }
+    .btn:active {
+      transform: scale(0.97);
+    }
+
     .hero-text h1 {
       font-size: clamp(48px, 6vw, 72px);
       font-weight: 800;
       line-height: 1.05;
       margin-bottom: 24px;
       letter-spacing: -0.03em;
+    }
+
+    .reveal-text span {
+      display: inline-block;
+      opacity: 0;
+      animation: revealWord 0.6s ease forwards;
     }
 
     .hero-text p {
@@ -231,6 +277,7 @@
       border-radius: 16px;
       overflow: hidden;
       border: 1px solid var(--gray-800);
+      animation: float 4s ease-in-out infinite;
     }
 
     .avatar-wrapper img {
@@ -334,6 +381,23 @@
     .feature-card {
       background: var(--black);
       padding: 48px 40px;
+      opacity: 0;
+      animation: cardIn 0.5s ease forwards;
+    }
+
+    .feature-card:nth-child(1) { animation-delay: 0.1s; }
+    .feature-card:nth-child(2) { animation-delay: 0.2s; }
+    .feature-card:nth-child(3) { animation-delay: 0.3s; }
+    .feature-card:nth-child(4) { animation-delay: 0.4s; }
+    .feature-card:nth-child(5) { animation-delay: 0.5s; }
+    .feature-card:nth-child(6) { animation-delay: 0.6s; }
+
+    .feature-card {
+      transition: background 0.2s;
+    }
+
+    .feature-card:hover {
+      background: var(--gray-900);
     }
 
     .feature-number {
@@ -375,6 +439,23 @@
       border: 1px solid var(--gray-800);
       border-radius: 8px;
       padding: 28px;
+      opacity: 0;
+      animation: cardIn 0.5s ease forwards;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .agent-card:nth-child(1) { animation-delay: 0.1s; }
+    .agent-card:nth-child(2) { animation-delay: 0.15s; }
+    .agent-card:nth-child(3) { animation-delay: 0.2s; }
+    .agent-card:nth-child(4) { animation-delay: 0.25s; }
+    .agent-card:nth-child(5) { animation-delay: 0.3s; }
+    .agent-card:nth-child(6) { animation-delay: 0.35s; }
+    .agent-card:nth-child(7) { animation-delay: 0.4s; }
+    .agent-card:nth-child(8) { animation-delay: 0.45s; }
+
+    .agent-card:hover {
+      border-color: var(--gray-600);
+      transform: translateY(-2px);
     }
 
     .agent-card h4 {
@@ -414,6 +495,17 @@
     .step {
       background: var(--black);
       padding: 48px 40px;
+      opacity: 0;
+      animation: cardIn 0.5s ease forwards;
+      transition: background 0.2s;
+    }
+
+    .step:nth-child(1) { animation-delay: 0.1s; }
+    .step:nth-child(2) { animation-delay: 0.2s; }
+    .step:nth-child(3) { animation-delay: 0.3s; }
+
+    .step:hover {
+      background: var(--gray-900);
     }
 
     .step-number {
@@ -576,7 +668,13 @@
             <span class="hero-badge-dot"></span>
             Private Beta
           </div>
-          <h1>AI agents for marketing websites</h1>
+          <h1 class="reveal-text">
+            <span style="animation-delay: 0s">AI</span>
+            <span style="animation-delay: 0.1s">agents</span>
+            <span style="animation-delay: 0.2s">for</span>
+            <span style="animation-delay: 0.3s">marketing</span>
+            <span style="animation-delay: 0.4s">websites</span>
+          </h1>
           <p>Transform your AI coding assistant into a team of specialized marketing experts. From strategy to deployment — guided workflows that ship.</p>
           <div class="hero-cta">
             <a href="mailto:riz@autonomous.so?subject=Hazn%20Access&body=Hey%2C%20I%27d%20like%20to%20try%20Hazn." class="btn btn-primary">
