@@ -121,15 +121,21 @@
     .nav-cta:hover { opacity: 0.8; }
 
     .nav-link {
-      padding: 10px 16px;
-      color: var(--gray-400);
+      padding: 10px 20px;
+      background: transparent;
+      border: 1px solid var(--gray-600);
+      border-radius: 6px;
+      color: var(--white);
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 600;
       text-decoration: none;
-      transition: color 0.2s;
+      transition: all 0.2s;
     }
 
-    .nav-link:hover { color: var(--white); }
+    .nav-link:hover { 
+      background: var(--gray-800);
+      border-color: var(--gray-500);
+    }
 
     /* Hero */
     .hero {
