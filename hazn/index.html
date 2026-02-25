@@ -304,6 +304,16 @@
       animation-play-state: paused;
     }
     
+    /* Agent card avatars */
+    .agent-avatar {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .agent-avatar:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    }
+    
     .terminal-badge {
       position: absolute;
       bottom: -16px;
@@ -590,113 +600,93 @@
       <!-- Agent Grid -->
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
         <!-- Agent 1: Strategist -->
-        <div class="fade-up stagger-1 card-hover bg-surface border border-border rounded-xl p-5">
-          <div class="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-            </svg>
+        <div class="fade-up stagger-1 card-hover bg-surface border border-border rounded-xl p-4 text-center">
+          <div class="w-16 h-16 mx-auto mb-3 rounded-xl overflow-hidden border border-border agent-avatar">
+            <img src="./avatars/strategist.png" alt="Strategist Agent" class="w-full h-full object-cover">
           </div>
           <h3 class="text-base font-semibold text-text-primary mb-1">Strategist</h3>
-          <p class="text-sm text-text-muted">Defines positioning and audience</p>
+          <p class="text-xs text-text-muted">Positioning & audience</p>
         </div>
         
         <!-- Agent 2: UX Architect -->
-        <div class="fade-up stagger-2 card-hover bg-surface border border-border rounded-xl p-5">
-          <div class="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
-            </svg>
+        <div class="fade-up stagger-2 card-hover bg-surface border border-border rounded-xl p-4 text-center">
+          <div class="w-16 h-16 mx-auto mb-3 rounded-xl overflow-hidden border border-border agent-avatar">
+            <img src="./avatars/ux-architect.png" alt="UX Architect Agent" class="w-full h-full object-cover">
           </div>
           <h3 class="text-base font-semibold text-text-primary mb-1">UX Architect</h3>
-          <p class="text-sm text-text-muted">Plans user experience and flow</p>
+          <p class="text-xs text-text-muted">User experience & flow</p>
         </div>
         
         <!-- Agent 3: Copywriter -->
-        <div class="fade-up stagger-3 card-hover bg-surface border border-border rounded-xl p-5">
-          <div class="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
-            </svg>
+        <div class="fade-up stagger-3 card-hover bg-surface border border-border rounded-xl p-4 text-center">
+          <div class="w-16 h-16 mx-auto mb-3 rounded-xl overflow-hidden border border-border agent-avatar">
+            <img src="./avatars/copywriter.png" alt="Copywriter Agent" class="w-full h-full object-cover">
           </div>
           <h3 class="text-base font-semibold text-text-primary mb-1">Copywriter</h3>
-          <p class="text-sm text-text-muted">Writes converting headlines and body</p>
+          <p class="text-xs text-text-muted">Headlines & conversion</p>
         </div>
         
         <!-- Agent 4: Wireframer -->
-        <div class="fade-up stagger-4 card-hover bg-surface border border-border rounded-xl p-5">
-          <div class="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"></path>
-            </svg>
+        <div class="fade-up stagger-4 card-hover bg-surface border border-border rounded-xl p-4 text-center">
+          <div class="w-16 h-16 mx-auto mb-3 rounded-xl overflow-hidden border border-border agent-avatar">
+            <img src="./avatars/wireframer.png" alt="Wireframer Agent" class="w-full h-full object-cover">
           </div>
           <h3 class="text-base font-semibold text-text-primary mb-1">Wireframer</h3>
-          <p class="text-sm text-text-muted">Creates page structure and layout</p>
+          <p class="text-xs text-text-muted">Structure & layout</p>
         </div>
         
         <!-- Agent 5: Developer -->
-        <div class="fade-up stagger-5 card-hover bg-surface border border-border rounded-xl p-5">
-          <div class="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-            </svg>
+        <div class="fade-up stagger-5 card-hover bg-surface border border-border rounded-xl p-4 text-center">
+          <div class="w-16 h-16 mx-auto mb-3 rounded-xl overflow-hidden border border-border agent-avatar">
+            <img src="./avatars/developer.png" alt="Developer Agent" class="w-full h-full object-cover">
           </div>
           <h3 class="text-base font-semibold text-text-primary mb-1">Developer</h3>
-          <p class="text-sm text-text-muted">Builds production-ready pages</p>
+          <p class="text-xs text-text-muted">Production-ready code</p>
         </div>
         
         <!-- Agent 6: SEO Specialist -->
-        <div class="fade-up stagger-6 card-hover bg-surface border border-border rounded-xl p-5">
-          <div class="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-            </svg>
+        <div class="fade-up stagger-6 card-hover bg-surface border border-border rounded-xl p-4 text-center">
+          <div class="w-16 h-16 mx-auto mb-3 rounded-xl overflow-hidden border border-border agent-avatar">
+            <img src="./avatars/seo-specialist.png" alt="SEO Specialist Agent" class="w-full h-full object-cover">
           </div>
           <h3 class="text-base font-semibold text-text-primary mb-1">SEO Specialist</h3>
-          <p class="text-sm text-text-muted">Optimizes for search visibility</p>
+          <p class="text-xs text-text-muted">Search visibility</p>
         </div>
         
         <!-- Agent 7: Content Writer -->
-        <div class="fade-up stagger-7 card-hover bg-surface border border-border rounded-xl p-5">
-          <div class="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-            </svg>
+        <div class="fade-up stagger-7 card-hover bg-surface border border-border rounded-xl p-4 text-center">
+          <div class="w-16 h-16 mx-auto mb-3 rounded-xl overflow-hidden border border-border agent-avatar">
+            <img src="./avatars/content-writer.png" alt="Content Writer Agent" class="w-full h-full object-cover">
           </div>
           <h3 class="text-base font-semibold text-text-primary mb-1">Content Writer</h3>
-          <p class="text-sm text-text-muted">Produces long-form articles</p>
+          <p class="text-xs text-text-muted">Long-form articles</p>
         </div>
         
         <!-- Agent 8: Auditor -->
-        <div class="fade-up stagger-8 card-hover bg-surface border border-border rounded-xl p-5">
-          <div class="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
-            </svg>
+        <div class="fade-up stagger-8 card-hover bg-surface border border-border rounded-xl p-4 text-center">
+          <div class="w-16 h-16 mx-auto mb-3 rounded-xl overflow-hidden border border-border agent-avatar">
+            <img src="./avatars/auditor.png" alt="Auditor Agent" class="w-full h-full object-cover">
           </div>
           <h3 class="text-base font-semibold text-text-primary mb-1">Auditor</h3>
-          <p class="text-sm text-text-muted">Reviews and improves existing work</p>
+          <p class="text-xs text-text-muted">Reviews & improves</p>
         </div>
         
-        <!-- Agent 9: Designer -->
-        <div class="fade-up stagger-9 card-hover bg-surface border border-border rounded-xl p-5">
-          <div class="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
-            </svg>
+        <!-- Agent 9: Email Specialist -->
+        <div class="fade-up stagger-9 card-hover bg-surface border border-border rounded-xl p-4 text-center">
+          <div class="w-16 h-16 mx-auto mb-3 rounded-xl overflow-hidden border border-border agent-avatar">
+            <img src="./avatars/email-specialist.png" alt="Email Specialist Agent" class="w-full h-full object-cover">
           </div>
-          <h3 class="text-base font-semibold text-text-primary mb-1">Designer</h3>
-          <p class="text-sm text-text-muted">Handles visual direction</p>
+          <h3 class="text-base font-semibold text-text-primary mb-1">Email Specialist</h3>
+          <p class="text-xs text-text-muted">Sequences & outreach</p>
         </div>
         
-        <!-- Agent 10: Analyst -->
-        <div class="fade-up stagger-10 card-hover bg-surface border border-border rounded-xl p-5">
-          <div class="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-            </svg>
+        <!-- Agent 10: Conversion Specialist -->
+        <div class="fade-up stagger-10 card-hover bg-surface border border-border rounded-xl p-4 text-center">
+          <div class="w-16 h-16 mx-auto mb-3 rounded-xl overflow-hidden border border-border agent-avatar">
+            <img src="./avatars/conversion-specialist.png" alt="Conversion Specialist Agent" class="w-full h-full object-cover">
           </div>
-          <h3 class="text-base font-semibold text-text-primary mb-1">Analyst</h3>
-          <p class="text-sm text-text-muted">Measures and iterates</p>
+          <h3 class="text-base font-semibold text-text-primary mb-1">Conversion Specialist</h3>
+          <p class="text-xs text-text-muted">A/B tests & growth</p>
         </div>
       </div>
       
